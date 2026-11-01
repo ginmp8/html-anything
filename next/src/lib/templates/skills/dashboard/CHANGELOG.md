@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.1] - 2026-11-01
+
+- Replace application-specific Chinese display metadata with English-only labels and samples.
+- Keep the skill's activation and workflow contract unchanged.
+
 ## [0.1.0] - 2026-11-01
 
 - First tracked version (earlier package had no tracked skill release): First tracked version of the existing admin dashboard template. Added source-aware KPI definitions, accessible chart/table requirements, responsive states, and honest static-data handling.

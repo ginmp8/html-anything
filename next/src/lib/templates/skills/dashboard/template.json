@@ -1,10 +1,10 @@
 {
-  "zh_name": "管理后台仪表板",
+  "zh_name": "Admin Dashboard",
   "en_name": "Admin Dashboard",
   "emoji": "🎛️",
   "category": "dashboard",
   "scenario": "operations",
-  "aspect_hint": "桌面 1440",
+  "aspect_hint": "Desktop 1440",
   "tags": [
     "dashboard",
     "admin",

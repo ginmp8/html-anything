@@ -1,21 +1,20 @@
 {
-  "zh_name": "系统架构地图",
+  "zh_name": "System Architecture Map",
   "en_name": "System Architecture Map",
   "emoji": "🧭",
   "category": "doc",
   "scenario": "engineering",
-  "aspect_hint": "架构图 + 依赖表",
+  "aspect_hint": "Architecture diagram and dependency table",
   "tags": [
     "architecture",
     "system",
     "diagram",
     "dependencies",
-    "trust-boundary",
-    "架构"
+    "trust-boundary"
   ],
   "example_id": "sample-system-architecture-map",
   "example_name": "Architecture Map · Example",
   "example_format": "markdown",
-  "example_tagline": "Components, typed edges, and trust boundaries",
-  "example_desc": "Illustrative workflow with gateway, queue, worker, and storage boundaries."
+  "example_tagline": "Components, typed edges and trust boundaries",
+  "example_desc": "Synthetic application architecture with gateway, queue, worker and storage boundaries"
 }
