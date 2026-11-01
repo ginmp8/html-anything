@@ -1,6 +1,5 @@
 ---
 name: saas-landing
-zh_name: "SaaS Landing"
 en_name: "SaaS Landing"
 emoji: "🚀"
 description: "单页 SaaS 落地页, 含 hero/features/social-proof/pricing/CTA"

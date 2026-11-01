@@ -1,6 +1,5 @@
 ---
 name: pricing-page
-zh_name: "定价页"
 en_name: "Pricing Page"
 emoji: "💳"
 description: "三档定价 + 特性对比表 + FAQ"

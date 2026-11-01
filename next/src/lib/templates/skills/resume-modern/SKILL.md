@@ -1,6 +1,5 @@
 ---
 name: resume-modern
-zh_name: "极简简历"
 en_name: "Modern Resume"
 emoji: "📄"
 description: "现代极简简历, A4 单页, 适合打印或导出 PDF"

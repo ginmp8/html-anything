@@ -1,6 +1,5 @@
 ---
 name: social-x-post-card
-zh_name: "X (Twitter) 帖子卡"
 en_name: "X / Twitter Post Card"
 emoji: "𝕏"
 description: "拟真 X 推文卡片 + 互动数据 (likes/reposts/views), 适配视频叠加或图卡分享"

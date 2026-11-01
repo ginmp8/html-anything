@@ -1,6 +1,5 @@
 ---
 name: social-media-dashboard
-zh_name: "社媒创作者仪表板"
 en_name: "Social Media Dashboard"
 emoji: "📡"
 description: "平台切换 + 粉丝/互动 KPI + 增长曲线 + Top post + 热门话题"
