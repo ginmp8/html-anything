@@ -1,6 +1,5 @@
 ---
 name: poster-hero
-zh_name: "营销海报"
 en_name: "Marketing Poster"
 emoji: "🖼️"
 description: "竖版海报 / 朋友圈分享图, 强视觉冲击"

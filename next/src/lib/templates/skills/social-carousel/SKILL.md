@@ -1,6 +1,5 @@
 ---
 name: social-carousel
-zh_name: "社交媒体三联"
 en_name: "Social Carousel"
 emoji: "🎠"
 description: "三张方形卡片轮播, 标题串联, 品牌 mark + 编号"

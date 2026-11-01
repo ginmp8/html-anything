@@ -11,7 +11,7 @@ import {
 } from "@/lib/templates";
 
 /**
- * Samples gallery — rendered on the "示例" tab in the editor pane. The list
+ * Samples gallery — rendered on the "Samples" tab in the editor pane. The list
  * comes from `/api/templates` filtered to skills that ship a pre-rendered
  * `example.html` (so every card has something to preview). Each card uses
  * `<iframe src=…>` pointing at `/api/templates/<id>/preview` — the browser
@@ -21,7 +21,6 @@ export function SamplesGallery({ onLoaded }: { onLoaded?: () => void }) {
   const templates = useTemplates();
   const loadSample = useStore((s) => s.loadSample);
   const tasks = useStore((s) => s.tasks);
-  const locale = useStore((s) => s.locale);
   const t = useT();
   const [filter, setFilter] = useState<string>("all");
   const [loadingId, setLoadingId] = useState<string | null>(null);
@@ -191,7 +190,6 @@ function SampleCard({
   onLoad: () => void;
 }) {
   const t = useT();
-  const locale = useStore((s) => s.locale);
   const example = tpl.example;
   const previewUrl = `/api/templates/${encodeURIComponent(tpl.id)}/preview`;
   return (
@@ -231,7 +229,7 @@ function SampleCard({
             className="rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-semibold tracking-wide backdrop-blur"
             style={{ border: "1px solid var(--line-faint)", color: "var(--ink)" }}
           >
-            {tpl.emoji} {locale === "en" ? tpl.enName : tpl.zhName}
+            {tpl.emoji} {tpl.enName}
           </span>
           {loaded && (
             <span
@@ -251,7 +249,7 @@ function SampleCard({
       <div className="flex flex-1 flex-col gap-2 p-4">
         <div>
           <div className="font-semibold text-[14px] text-[var(--ink)] leading-snug">
-            {example?.name || (locale === "en" ? tpl.enName : tpl.zhName)}
+            {example?.name || tpl.enName}
           </div>
           {example?.tagline && (
             <div className="text-[11.5px] text-[var(--coral)] mt-0.5">{example.tagline}</div>

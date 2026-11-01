@@ -1,6 +1,5 @@
 ---
 name: team-okrs
-zh_name: "团队 OKR 追踪"
 en_name: "Team OKRs"
 emoji: "🎯"
 description: "季度 banner + 3 个目标 + KR 进度条 + owner + 状态 pill"

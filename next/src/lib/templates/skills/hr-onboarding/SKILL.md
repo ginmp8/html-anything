@@ -1,6 +1,5 @@
 ---
 name: hr-onboarding
-zh_name: "新员工入职页"
 en_name: "HR Onboarding"
 emoji: "👋"
 description: "首周日程 + buddy + 学习路径 + 设备 + 完成标准"

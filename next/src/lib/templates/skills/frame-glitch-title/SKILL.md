@@ -1,6 +1,5 @@
 ---
 name: frame-glitch-title
-zh_name: "故障艺术标题帧"
 en_name: "Glitch Title Frame"
 emoji: "⚡"
 description: "数字故障 / 像散偏移 / 数据腐败标题, 适合视频转场 / cyberpunk hero"

@@ -11,7 +11,6 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 const SKILL_MD = `---
 name: usertest
-zh_name: 用户测试
 en_name: User Test
 emoji: "🧪"
 description: a user skill
@@ -71,6 +70,7 @@ describe("loader merge", () => {
     expect(skill).not.toBeNull();
     expect(skill?.body).toContain("Body of the user skill");
     expect(skill?.enName).toBe("User Test");
+    expect(Object.keys(skill!).filter((key) => key.endsWith("Name"))).toEqual(["enName"]);
   });
 
   it("loadSkill returns null for an unknown namespaced id without throwing", async () => {

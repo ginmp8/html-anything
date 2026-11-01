@@ -1,6 +1,5 @@
 ---
 name: deck-simple
-zh_name: "通用 Simple Deck"
 en_name: "Simple Deck"
 emoji: "▫️"
 description: "通用 horizontal-swipe HTML deck, 不要 magazine 调"

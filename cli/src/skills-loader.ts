@@ -8,7 +8,6 @@ import path from "node:path";
 
 export type SkillFrontmatter = {
   name?: string;
-  zh_name?: string;
   en_name?: string;
   emoji?: string;
   description?: string;
@@ -40,7 +39,6 @@ export type SkillExampleMeta = {
 
 export type SkillMeta = {
   id: string;
-  zhName: string;
   enName: string;
   emoji: string;
   description: string;
@@ -96,7 +94,6 @@ function parseFrontmatter(raw: string): { fm: SkillFrontmatter; body: string } {
         break;
       }
       case "name":
-      case "zh_name":
       case "en_name":
       case "emoji":
       case "description":
@@ -125,11 +122,64 @@ function safeRead(p: string): string | undefined {
   }
 }
 
+
+/**
+ * Optional picker-only metadata. SKILL.md may therefore keep standard Agent
+ * Skills frontmatter (name + description), while legacy inlined fields still work.
+ * The sidecar never overrides the portable activation contract.
+ */
+function readTemplateMetadata(dir: string): Partial<SkillFrontmatter> {
+  const raw = safeRead(path.join(dir, "template.json"));
+  if (!raw || raw.length > 16_384) return {};
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return {};
+  }
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
+  const data = parsed as Record<string, unknown>;
+  const fm: Partial<SkillFrontmatter> = {};
+  const textFields = [
+    "en_name", "emoji", "category", "scenario", "aspect_hint",
+    "example_id", "example_name", "example_format", "example_tagline",
+    "example_desc", "example_source_url", "example_source_label",
+  ] as const;
+  for (const key of textFields) {
+    const value = data[key];
+    if (typeof value === "string" && value.length <= 500) fm[key] = value;
+  }
+  for (const key of ["featured", "recommended"] as const) {
+    const value = data[key];
+    if (typeof value === "number" && Number.isSafeInteger(value) && value >= 0 && value <= 10000) {
+      fm[key] = value;
+    }
+  }
+  if (
+    Array.isArray(data.tags) &&
+    data.tags.length <= 32 &&
+    data.tags.every((tag: unknown) => typeof tag === "string" && tag.length > 0 && tag.length <= 64)
+  ) {
+    fm.tags = data.tags as string[];
+  }
+  // Picker source links are untrusted metadata: never allow script/data schemes.
+  if (fm.example_source_url) {
+    try {
+      const url = new URL(fm.example_source_url);
+      if (url.protocol !== "https:" && url.protocol !== "http:") {
+        delete fm.example_source_url;
+      }
+    } catch {
+      delete fm.example_source_url;
+    }
+  }
+  return fm;
+}
+
 function fmToMeta(id: string, fm: SkillFrontmatter, hasHtml: boolean, hasMd: boolean): SkillMeta {
   const meta: SkillMeta = {
     id,
-    zhName: fm.zh_name ?? fm.name ?? id,
-    enName: fm.en_name ?? id,
+    enName: fm.en_name ?? fm.name ?? id,
     emoji: fm.emoji ?? "✨",
     description: fm.description ?? "",
     category: fm.category ?? "other",
@@ -142,7 +192,7 @@ function fmToMeta(id: string, fm: SkillFrontmatter, hasHtml: boolean, hasMd: boo
   if (fm.example_id || hasMd || hasHtml) {
     meta.example = {
       id: fm.example_id ?? `example-${id}`,
-      name: fm.example_name ?? `${meta.zhName} 示例`,
+      name: fm.example_name ?? `${meta.enName} Example`,
       format: fm.example_format ?? "markdown",
       tagline: fm.example_tagline ?? "",
       desc: fm.example_desc ?? "",
@@ -183,7 +233,7 @@ export function listSkills(skillsDir: string): SkillMeta[] {
     const { fm } = parseFrontmatter(raw);
     const hasHtml = fs.existsSync(path.join(dir, "example.html"));
     const hasMd = fs.existsSync(path.join(dir, "example.md"));
-    out.push(fmToMeta(id, fm, hasHtml, hasMd));
+    out.push(fmToMeta(id, { ...fm, ...readTemplateMetadata(dir) }, hasHtml, hasMd));
   }
   return out;
 }
@@ -196,6 +246,6 @@ export function loadSkill(skillsDir: string, id: string): LoadedSkill | null {
   const { fm, body } = parseFrontmatter(raw);
   const exampleMd = safeRead(path.join(dir, "example.md"));
   const exampleHtml = safeRead(path.join(dir, "example.html"));
-  const meta = fmToMeta(id, fm, !!exampleHtml, !!exampleMd);
+  const meta = fmToMeta(id, { ...fm, ...readTemplateMetadata(dir) }, !!exampleHtml, !!exampleMd);
   return { ...meta, body, exampleMd, exampleHtml };
 }

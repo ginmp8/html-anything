@@ -1,6 +1,5 @@
 ---
 name: deck-xhs-white
-zh_name: "白底杂志风 Deck"
 en_name: "White Editorial Deck"
 emoji: "🌈"
 description: "纯白 + 顶部彩虹 bar + 渐变文字 + 马卡龙软卡片 + 黑底 pill"

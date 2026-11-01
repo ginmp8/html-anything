@@ -1,6 +1,5 @@
 ---
 name: social-media-matrix
-zh_name: "社媒矩阵追踪面板"
 en_name: "Social Media Matrix Tracker"
 emoji: "🛰️"
 description: "电影感多平台社媒分析: 互动图、悬浮洞察、区间对比、明暗主题"

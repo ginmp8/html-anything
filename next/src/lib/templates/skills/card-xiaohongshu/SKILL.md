@@ -1,26 +1,26 @@
 ---
 name: card-xiaohongshu
-zh_name: "小红书图文卡片"
 en_name: "Xiaohongshu Card"
 emoji: "📱"
-description: "小红书风格知识卡片, 多张联排可滑动浏览"
+description: "Create a scrollable sequence of 3:4 Xiaohongshu-style knowledge cards with one insight per card and a consistent pastel identity."
 category: card
 scenario: marketing
 aspect_hint: "1080×1440 (3:4)"
 featured: 24
-tags: ["xhs", "小红书", "carousel", "图文"]
+tags: ["xhs","carousel"]
 example_id: sample-xhs-ai-habits
-example_name: "小红书图文卡 · AI 工具习惯"
+example_name: "Social Knowledge Cards · AI Habits"
 example_format: markdown
-example_tagline: "7 张连排, 莫兰迪渐变"
-example_desc: "干货卡片合集, 适合截图发小红书 / 朋友圈"
+example_tagline: "A multi-card educational carousel in muted pastels"
+example_desc: "A practical set of AI-workflow habits rendered as individual mobile-friendly cards."
 ---
 
-【模板: 小红书图文卡片】
-- 输出 N 张连续卡片, 每张 `w-[1080px] h-[1440px]`, 用 flex 纵向排列方便整体截图也方便单张截图。N 由【用户内容】信息量决定: 短内容 3-6 张起步, 长内容应更多 (小红书平台单帖最多 18 图, 通常 9 张以内最佳); 一张卡只承载一个核心观点。
-- 第一张是封面: 巨大的标题 + 1 行副标题 + 一个吸引人的标签 (类似 "干货预警" / "建议收藏")。
-- 中间几张展开正文, 每张一个核心观点, 配 emoji + 短句 + 1-2 个例子。
-- 最后一张是总结 + 行动号召 (关注 / 收藏 / 评论)。
-- 配色: 选择柔和的莫兰迪色或粉色系; 元素圆润, 大量留白。
-- 字号大、行距宽、对比强（小红书在手机上看, 小字根本看不清）。
-- 每张卡片右下角小水印 (作者名 / 日期)。
+# Xiaohongshu-Style Knowledge Card Carousel
+Create as many 1080×1440 cards as the user's content requires. Arrange them vertically in one HTML document for whole-page or individual screenshots. Short inputs may use three to six cards; longer material needs more.
+- Cover: large meaningful headline, one-line subtitle and a concise content hook.
+- Body: one distinct insight per card, with clear short explanations and one or two grounded examples.
+- Closing card: recap and a simple save, follow or comment action when appropriate.
+- Choose muted Morandi or warm pastel colors, generous spacing and rounded, phone-friendly shapes.
+- Keep fonts large and readable at mobile size; avoid shrinking text to fit arbitrarily many ideas.
+- Add only user-provided creator name or date as a small lower-right attribution.
+- Observe any platform posting limits when relevant, but never omit user content to meet a decorative slide count.

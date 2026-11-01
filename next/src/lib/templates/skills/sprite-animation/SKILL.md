@@ -1,6 +1,5 @@
 ---
 name: sprite-animation
-zh_name: "像素动画解说"
 en_name: "Sprite Animation"
 emoji: "🕹️"
 description: "像素美术 + kinetic 字体的解说帧, 纯 CSS 循环, 可录视频"

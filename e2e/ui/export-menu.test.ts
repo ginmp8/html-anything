@@ -292,10 +292,10 @@ test.describe("Export menu", () => {
     await seedStore(page, { html: hyperframesHtml, locale: "zh-CN" });
 
     await page.goto("/");
-    await page.getByRole("button", { name: /导出/ }).click();
+    await page.getByRole("button", { name: /Export/ }).click();
     const menu = page.getByTestId("export-menu");
 
-    await expect(menu.getByText("Hyperframes · 共 2 帧")).toBeVisible();
-    await expect(menu.getByRole("button", { name: /Remotion 项目 \(\.zip\)/ })).toBeVisible();
+    await expect(menu.getByText("Hyperframes · 2 frames")).toBeVisible();
+    await expect(menu.getByRole("button", { name: /Remotion project \(\.zip\)/ })).toBeVisible();
   });
 });

@@ -1,6 +1,5 @@
 ---
 name: deck-tech-sharing
-zh_name: "技术分享 Deck"
 en_name: "Tech Sharing Deck"
 emoji: "💻"
 description: "GitHub-dark + JetBrains Mono + 终端代码块, 含 agenda + Q&A"

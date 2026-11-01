@@ -1,6 +1,5 @@
 ---
 name: eng-runbook
-zh_name: "工程 Runbook"
 en_name: "Engineering Runbook"
 emoji: "📕"
 description: "服务概述 + alerts 表 + dashboards + 操作命令 + on-call + 事故清单"

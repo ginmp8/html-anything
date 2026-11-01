@@ -1,6 +1,5 @@
 ---
 name: live-dashboard
-zh_name: "Notion 风团队仪表板"
 en_name: "Live Team Dashboard"
 emoji: "📈"
 description: "Notion 风团队仪表板, KPI + 7 日 sparkline + activity feed + 任务表"

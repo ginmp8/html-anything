@@ -1,6 +1,5 @@
 ---
 name: frame-liquid-bg-hero
-zh_name: "流体背景 Hero 帧"
 en_name: "Liquid Background Hero"
 emoji: "🌊"
 description: "WebGL 风流体置换背景 + 顶部叠加金句, 适合视频片头 / landing hero / 海报"

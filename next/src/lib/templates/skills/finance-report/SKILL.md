@@ -1,6 +1,5 @@
 ---
 name: finance-report
-zh_name: "季度财报"
 en_name: "Finance Report"
 emoji: "💼"
 description: "Masthead + KPI + 收入/烧钱图 + P&L 表 + 重点 + 展望"

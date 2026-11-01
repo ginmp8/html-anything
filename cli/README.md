@@ -1,288 +1,233 @@
 # html-anything CLI
 
-从命令行直接将 Markdown（或纯文本/CSV/JSON）转换为精美排版的 HTML 文件，无需打开网页界面。
+Convert Markdown, plain text, CSV, and JSON into well-designed HTML from a terminal, without opening the graphical editor.
 
-## 安装
+## Installation
 
-```bash
-# 1. 进入项目目录，安装依赖
+~~~bash
 cd html-anything
 pnpm install
-
-# 2. 构建 CLI
 pnpm -F @html-anything/cli build
-```
+~~~
 
-### 全局安装（可选）
+After building, optionally link the CLI globally:
 
-构建完成后，可以创建全局链接：
-
-```bash
-# 在 cli 目录下创建全局链接
+~~~bash
 cd cli
 npm link
-
-# 之后可以在任意目录使用
 html-anything --help
-```
+~~~
 
-或者将以下别名添加到 `~/.zshrc` 或 `~/.bashrc`：
+Or define a shell alias pointing to the built executable:
 
-```bash
+~~~bash
 alias html-anything="node /path/to/html-anything/cli/dist/run.js"
-```
+~~~
 
-## 快速开始
+## Quick start
 
-### 1. 设置默认模板（推荐）
+### 1. Configure the default template
 
-```bash
-# 查看所有可用模板
+~~~bash
 html-anything templates
-
-# 设置一个默认模板，之后 convert 时无需每次都指定
 html-anything config set-default-template doc-kami-parchment
-```
+~~~
 
-### 2. 转换 Markdown 文件
+### 2. Convert input
 
-```bash
-# 自动匹配模板（推荐：无需手动选模板）
+~~~bash
+# Match the best template automatically.
 html-anything auto article.md
 
-# 仅查看匹配结果，不执行转换
+# Display the match without invoking an agent.
 html-anything auto article.md --show-match-only
 
-# 使用默认模板转换（自动保存为 article.html）
+# Convert using the configured default template (article.html).
 html-anything convert article.md
 
-# 批量转换多个文件
+# Convert multiple files.
 html-anything convert file1.md file2.md file3.md -d ./dist
 
-# 保存到指定文件
+# Choose an output file or directory.
 html-anything convert article.md -o output.html
-
-# 指定自动保存目录
 html-anything convert article.md -d ./dist
 
-# 指定模板
+# Choose the template and local AI agent explicitly.
 html-anything convert article.md -t resume-modern
-
-# 指定 AI agent
 html-anything convert article.md -a claude --model sonnet
 
-# 从标准输入读取（输出到 stdout）
+# Read from standard input.
 cat article.md | html-anything convert -o page.html
-```
+~~~
 
-### 3. 查看生成结果
+### 3. Review the result
 
-```bash
-# 用浏览器打开生成的 HTML
+~~~bash
 open output.html
-```
+~~~
 
-## 命令详解
+## Command reference
 
-### `convert` / `auto` — 转换内容
+### convert and auto
 
-两个命令共享以下通用参数：
+Both commands accept the following common arguments:
 
-| 参数 | 简写 | 说明 | 默认值 |
-|------|------|------|--------|
-| `input` | — | 输入文件路径，省略则从 stdin 读取 | stdin |
-| `--agent <id>` | `-a` | AI agent ID | 自动检测第一个可用 agent |
-| `--output <path>` | `-o` | 输出文件路径 | 自动保存为 `<输入文件名>.html`，stdin 输入时输出到 stdout |
-| `--output-dir <dir>` | `-d` | 自动保存目录 | 当前目录 |
-| `--model <id>` | — | 使用的模型 | agent 默认模型 |
-| `--format <type>` | — | 输入格式：markdown, text, csv, json | markdown |
+| Argument | Short | Meaning | Default |
+| --- | --- | --- | --- |
+| input | — | Input file; omit for stdin | stdin |
+| --agent <id> | -a | Local AI agent | First detected and supported agent |
+| --output <path> | -o | Output file | Input stem with an .html extension, or stdout for stdin |
+| --output-dir <dir> | -d | Output directory | Working directory |
+| --model <id> | — | Agent model | Agent default |
+| --format <type> | — | Input format: markdown, text, csv, json | markdown |
 
-#### `convert` — 指定模板转换
+#### convert: explicit template
 
-```bash
+~~~bash
 html-anything convert [input] [options]
-```
+~~~
 
-用户明确指定模板 ID 来转换内容。
+Use the configured default template or supply --template (short flag -t) with a template ID.
 
-| 参数 | 简写 | 说明 | 默认值 |
-|------|------|------|--------|
-| `--template <id>` | `-t` | 模板 ID | 配置中的 default-template |
+#### auto: automatic matching
 
-#### `auto` — 自动匹配模板并转换
-
-```bash
+~~~bash
 html-anything auto [input] [options]
-```
+~~~
 
-无需手动选择模板，CLI 自动分析内容主题，从 75 个模板中匹配最合适的模板，然后执行转换。
+Matches the input against the available skill templates, then converts it.
 
-| 参数 | 简写 | 说明 | 默认值 |
-|------|------|------|--------|
-| `--force-ai` | — | 跳过关键词匹配，强制使用 AI summary | — |
-| `--show-match-only` | — | 仅显示匹配结果，不执行转换 | — |
+| Argument | Meaning |
+| --- | --- |
+| --force-ai | Skip the rule-based shortcut and request an AI topic summary |
+| --show-match-only | Show the selected template without generating HTML |
 
-### `templates` — 列出模板
+### templates: list templates
 
-```bash
+~~~bash
 html-anything templates
-```
+~~~
 
-列出所有 75 个可用模板，按类别分组显示。已设为默认的模板会标记 `(default)`。
+Lists templates by category. The configured default is marked (default).
 
-### `agents` — 列出 Agent
+### agents: list local agents
 
-```bash
+~~~bash
 html-anything agents
-```
+~~~
 
-列出系统中已安装的 AI agent CLI。`✓` 表示可用，`✗` 表示未安装。
+Lists detected local AI agent CLI tools and their availability.
 
-### `config` — 配置管理
+### config: manage configuration
 
-```bash
-html-anything config                          # 查看当前配置
-html-anything config set-default-template <id>  # 设置默认模板
-html-anything config set-default-agent <id>     # 设置默认 agent
-html-anything config set-model <id>             # 设置默认模型
-html-anything config reset                      # 重置所有配置
-```
+~~~bash
+html-anything config
+html-anything config set-default-template <id>
+html-anything config set-default-agent <id>
+html-anything config set-model <id>
+html-anything config reset
+~~~
 
-配置文件位于 `~/.config/html-anything/config.json`。
+Configuration is stored at ~/.config/html-anything/config.json.
 
-## 支持的 AI Agent
+## Supported local AI CLIs
 
-html-anything 本身不做 AI 生成，它会自动检测并调用你系统里已安装的 AI CLI 工具（任意一个即可）来完成转换。支持的 AI CLI：
+HTML Anything invokes an existing local agent CLI. The local agent handles generation; HTML Anything supplies the assembled prompt and consumes the generated HTML.
 
-| Agent | 安装方式 |
-|-------|----------|
-| Claude Code | `npm install -g @anthropic-ai/claude-code` |
-| OpenAI Codex | `npm install -g @openai/codex` |
-| Cursor Agent | 安装 Cursor 编辑器后可用 |
-| Gemini CLI | `npm install -g @google/gemini-cli` |
-| GitHub Copilot CLI | `npm install -g @github/copilot-cli` |
-| OpenCode | `npm install -g @open/open-cli` |
-| Qwen Coder | `npm install -g @alibaba/qwen-coder` |
-| CodeWhale | `npm install -g codewhale` |
-| DeepSeek TUI | `npm install -g deepseek-tui` |
-| Aider | `pip install aider-chat` |
-| OpenClaw | 参考官方文档安装 |
+| Agent | Typical installation |
+| --- | --- |
+| Claude Code | npm install -g @anthropic-ai/claude-code |
+| OpenAI Codex | npm install -g @openai/codex |
+| Cursor Agent | Install the Cursor Agent CLI |
+| Gemini CLI | npm install -g @google/gemini-cli |
+| GitHub Copilot CLI | npm install -g @github/copilot-cli |
+| OpenCode | Consult the official OpenCode installation guide |
+| Qwen Coder | Consult official Qwen Coder documentation |
+| CodeWhale | Consult the project installation guide |
+| DeepSeek TUI | Consult the project installation guide |
+| Aider | pip install aider-chat |
+| OpenClaw | Consult official installation instructions |
 
-## 常用模板推荐
+Protocol support depends on the installed agent version and the application's adapter. Detection does not imply every protocol is supported for conversion.
 
-| 模板 ID | 名称 | 适用场景 |
-|---------|------|----------|
-| `doc-kami-parchment` | Kami 羊皮纸文档 | 长文、报告、one-pager |
-| `resume-modern` | 极简简历 | A4 单页简历 |
-| `deck-swiss-international` | 瑞士国际主义 Deck | 演示文稿 |
-| `deck-guizang-editorial` | 贵赞编辑墨水 Deck | 杂志风 PPT |
-| `magazine-poster` | 杂志风海报 | 海报、宣传单页 |
-| `blog-post` | 博客长文 | 技术博客 |
-| `data-report` | 数据可视化报告 | 数据分析报告 |
-| `card-xiaohongshu` | 小红书图文卡片 | 社交媒体图文 |
-| `prototype-web` | Web 产品原型 | 产品原型 |
-| `saas-landing` | SaaS Landing | 产品落地页 |
+## Recommended templates
 
-## 完整使用示例
+| Template ID | Intended use |
+| --- | --- |
+| doc-kami-parchment | Editorial document and long-form report |
+| resume-modern | Printable A4 resume |
+| deck-swiss-international | Slide presentation |
+| deck-guizang-editorial | Magazine-inspired slides |
+| magazine-poster | Poster and editorial announcement |
+| blog-post | Technical blog post |
+| data-report | Data visualization report |
+| card-xiaohongshu | Social-media content cards |
+| prototype-web | Interactive web prototype |
+| saas-landing | SaaS landing page |
 
-```bash
-# 1. 首次使用：查看有哪些模板
+## Complete example
+
+~~~bash
+# 1. Inspect templates.
 html-anything templates
 
-# 2. 设置你最喜欢的模板为默认
+# 2. Set a default.
 html-anything config set-default-template doc-kami-parchment
 
-# 3. 写一篇 Markdown 文章
+# 3. Create a Markdown document.
 cat > my-article.md << 'EOF'
-# 我的项目总结
+# Project Summary
 
-## 背景
-这是一个关于...
+## Background
+This project helps teams publish readable technical documentation.
 
-## 成果
-- 完成了 A 功能
-- 优化了 B 模块
+## Outcomes
+- Delivered feature A
+- Improved module B
 
-## 下一步
-我们计划在 Q3 完成...
+## Next steps
+Finish the next phase in Q3.
 EOF
 
-# 4. 一键自动匹配模板并转换（推荐）
+# 4. Match and convert.
 html-anything auto my-article.md
 
-# 5. 在浏览器中查看结果
+# 5. View the output.
 open my-article.html
 
-# 6. 如果只想看匹配结果
+# 6. See the selected template without generating.
 html-anything auto my-article.md --show-match-only
 
-# 7. 如果想换个风格
+# 7. Change the visual style.
 html-anything convert my-article.md -t blog-post -o my-article-v2.html
 
-# 8. 保存到指定目录
+# 8. Use another output directory.
 html-anything convert my-article.md -d ./output
-```
+~~~
 
-## 开发
+## Development
 
-```bash
-# 开发模式（无需构建，直接运行 TypeScript）
+~~~bash
 pnpm -F @html-anything/cli dev -- templates
-
-# 类型检查
 pnpm -F @html-anything/cli typecheck
-
-# 构建
 pnpm -F @html-anything/cli build
-```
+~~~
 
-## 工作原理
+## Architecture
 
-### `convert` 命令流程
+### convert
 
-1. **模板加载**：从 `next/src/lib/templates/skills/` 加载 75 个 SKILL 模板，每个模板包含视觉风格定义和排版规则
-2. **Prompt 拼接**：将全局设计指令 + 模板专属规则 + 用户内容拼接成一个完整的 AI prompt
-3. **Agent 调用**：调用本地安装的 AI agent CLI（如 Claude Code），让 AI 根据 prompt 生成 HTML
-4. **HTML 提取**：从 agent 的流式输出中提取完整的 HTML 文档
-5. **输出**：将 HTML 写入文件或打印到 stdout
+1. **Template loading:** Load a skill prompt from next/src/lib/templates/skills/.
+2. **Prompt assembly:** Combine global design guidance, template instructions, and user input.
+3. **Agent invocation:** Run the selected local AI CLI and stream its response.
+4. **HTML extraction:** Extract the completed HTML document from the streamed output.
+5. **Output:** Write the HTML to a file or print it to standard output.
 
-### `auto` 命令流程
+### auto
 
-```
-用户内容
-    │
-    ▼
-┌─────────────────────────┐
-│ 第一层：强信号关键词匹配   │  ← 零 token，毫秒级
-│ 命中 → 直接使用匹配模板    │
-│ (简历→resume-modern 等)  │
-└──────────┬──────────────┘
-           │ 未命中
-           ▼
-┌─────────────────────────┐
-│ 第二层：规则打分匹配       │  ← 零 token，毫秒级
-│ 内容 × 全部模板 metadata  │
-│ (tags + name + desc +    │
-│  scenario keywords)      │
-│ 置信度 ≥ 阈值 → 使用      │
-└──────────┬──────────────┘
-           │ 置信度不足
-           ▼
-┌─────────────────────────┐
-│ 第三层：AI Summary 兜底   │  ← 仅在规则失配时
-│ 提取内容前 800 字         │
-│ → AI 判断主题类型         │
-│ → 再次规则匹配            │
-└──────────┬──────────────┘
-           │
-           ▼
-       执行转换
-```
+1. **Strong signals:** Match common terms such as resume, pricing, OKRs, and weekly updates. This step does not call a model.
+2. **Metadata scoring:** Rank candidate templates using their names, descriptions, categories, tags, and scenario keywords.
+3. **AI fallback:** For ambiguous longer inputs, ask the local AI agent for a short document-type summary, then score the summary.
+4. **Default fallback:** Use a general-purpose template when no candidate scores sufficiently.
 
-**匹配策略说明**：
-- **强信号**（~80 条规则）：覆盖简历、定价、OKR、PRD、周报等高频场景，命中即定
-- **规则打分**：遍历所有模板的 tags、名称、描述、场景关键词，累加得分
-- **AI 兜底**：内容 ≥ 60 字且前两层均低置信度时，调用 AI 做一句话主题摘要，仅消耗极少量 token
-- **最终兜底**：若所有层均失败，回退到 `deck-swiss-international` 通用模板
-
-整个过程完全本地运行，不依赖任何外部 API key，使用你已有的 agent 订阅。转换过程中会显示动画进度指示器，展示已接收的文本块数和耗时。
+The CLI reuses the user's existing local agent installation. Its progress output reports received text chunks and elapsed time.

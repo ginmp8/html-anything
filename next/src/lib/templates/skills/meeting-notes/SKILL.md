@@ -1,6 +1,5 @@
 ---
 name: meeting-notes
-zh_name: "会议纪要"
 en_name: "Meeting Notes"
 emoji: "🗒️"
 description: "标题 + 出席 + 议程 + 决议 + action items + 下次"

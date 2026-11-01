@@ -1,6 +1,5 @@
 ---
 name: ppt-keynote
-zh_name: "Keynote 风格 PPT"
 en_name: "Keynote-style Slides"
 emoji: "🎬"
 description: "苹果 Keynote 级别幻灯片, 一屏一卡, 键盘左右切换"

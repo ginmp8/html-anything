@@ -1,6 +1,5 @@
 ---
 name: prototype-web
-zh_name: "Web 产品原型"
 en_name: "Web Prototype"
 emoji: "🛠️"
 description: "可点击的功能性 Web 原型, 含导航、英雄区、特性区、CTA"

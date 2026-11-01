@@ -1,24 +1,20 @@
 ---
 name: blog-post
-zh_name: "博客长文"
 en_name: "Blog Post"
 emoji: "📰"
-description: "杂志感长文, 含 masthead、hero、figures、pull quote、作者署名"
+description: "Format a substantial editorial blog post with masthead, hero, figures, pull quotes, author details and related reading."
 category: article
 scenario: marketing
-aspect_hint: "长页面"
-tags: ["blog", "essay", "case study", "长文"]
+aspect_hint: "Long-form reading page"
+tags: ["blog","essay","case study"]
 ---
 
-【模板: 博客长文 / Blog Post】
-【意图】≥ 600 字的真正的长文章, 排版以 typography 为主, 70% 文字 20% 图 10% chrome。
-【布局】
-- Masthead (publication name + date)
-- Hero (大标题 + 副标 + 作者署名 + 阅读时间)
-- 正文 (单栏 65ch, 含 figures, pull quotes, 行内引用)
-- Author bio 卡片
-- Related posts (3 张卡)
-【设计细节】
-- Pull quote 用大号 serif 斜体 + 左侧色条
-- Figures 自带 caption (italic, smaller)
-- 代码块: 圆角 + 深色 + 语言标签
+# Editorial Blog Post
+Use for a substantial blog article, generally 600 words or more when the source supports it.
+
+- Typography should dominate: approximately 70% text, 20% images or figures when supplied, and 10% interface framing.
+- Include a publication masthead and date only when provided; create a large headline, subtitle, byline and reading time when those details are available.
+- Present the body in a centered single column of about 65 characters per line; support figures, pull quotes, inline citations and code samples.
+- Give pull quotes a large italic serif treatment and thin accent rule; every figure needs a caption.
+- Include an author biography or related-post references only when supported by supplied source data, otherwise omit those sections.
+- Keep code panels dark, legible and labeled. Preserve all substantive sections.

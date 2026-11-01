@@ -1,6 +1,5 @@
 ---
 name: digital-eguide
-zh_name: "电子指南"
 en_name: "Digital E-Guide"
 emoji: "📚"
 description: "两页跨页电子指南, 封面 + 课程页 + pull-quote + 步骤列表"

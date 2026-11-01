@@ -1,6 +1,5 @@
 ---
 name: doc-kami-parchment
-zh_name: "Kami 羊皮纸文档"
 en_name: "Kami Parchment Document"
 emoji: "📜"
 description: "暖羊皮纸底 (#f5f4ed) + 墨蓝单色 accent (#1B365D) + 单一衬线字体, 编辑级排印"

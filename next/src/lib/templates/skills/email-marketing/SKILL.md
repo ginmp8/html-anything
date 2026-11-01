@@ -1,6 +1,5 @@
 ---
 name: email-marketing
-zh_name: "营销邮件"
 en_name: "Marketing Email"
 emoji: "📧"
 description: "产品发布邮件, 含 masthead、hero、CTA、规格表, table-fallback"

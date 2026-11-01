@@ -1,6 +1,5 @@
 ---
 name: info-funnel
-zh_name: "漏斗信息图"
 en_name: "Funnel Infographic"
 emoji: "🪣"
 description: "3-6 阶递减漏斗, 突出转化率 / 筛选比例 / 流量损耗。竖图适合 IG Story / 小红书"

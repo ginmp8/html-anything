@@ -1,0 +1,12 @@
+{
+  "en_name": "Admin Dashboard",
+  "emoji": "🎛️",
+  "category": "dashboard",
+  "scenario": "operations",
+  "aspect_hint": "Desktop 1440",
+  "tags": [
+    "dashboard",
+    "admin",
+    "analytics"
+  ]
+}

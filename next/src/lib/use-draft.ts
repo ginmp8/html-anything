@@ -37,7 +37,7 @@ export function useDraft() {
     const agent = store.selectedAgent;
     if (!agent) {
       setStatus("error");
-      setError("先在右上角选择一个 agent");
+      setError("Select an agent in the upper-right corner first");
       return;
     }
     const taskId = store.activeTaskId;

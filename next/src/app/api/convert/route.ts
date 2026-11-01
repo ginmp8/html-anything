@@ -35,28 +35,28 @@ function buildEditPrompt(args: {
   oldHtml: string;
   format: string;
 }): string {
-  return `你正在执行一次**最小化差异编辑** (diff-edit), 不是从 0 重新生成。
+  return `You are performing a minimal-diff edit of an existing HTML document, not generating a new design from scratch.
 
-模板风格: ${args.templateName} (${args.templateAspect})
-输入格式: ${args.format}
+Template style: ${args.templateName} (${args.templateAspect})
+Input format: ${args.format}
 
-【硬性规则】
-1. 仅输出完整的、修改后的 HTML。第一个字符必须是 \`<\`, 最后必须是 \`</html>\`。
-2. **不要**用 markdown 围栏包裹, 不要任何解释性文字。
-3. **禁止使用 Write / Edit / MultiEdit / Bash 等文件工具** — HTML 必须直接在助手回复正文里流式输出, 不要存到 \`.html\` 文件再回复"已输出至 …"。
-4. 保留原 HTML 的 \`<head>\` (CDN / 字体 / 样式 / meta), 保留所有不需要变化的 DOM 结构 — 字体、配色、布局、栅格、组件结构、动画都不许改。
-5. 仅根据 "旧内容 vs 新内容" 的差异, 替换或调整对应的文字 / 数据节点。
-6. 如果新内容增加了条目, 沿用原有的卡片 / 行 / slide / 章节结构添加; 如果删除了条目, 移除对应的元素。
-7. 如果新旧内容只差几个字, 也只改那几个字 — 不要顺手 "优化" 或 "重排"。
-8. 不要捏造数据。新内容里没有的就不要写。
+[REQUIRED RULES]
+1. Return the complete updated HTML document only. Its first character must be < and its last tag must be </html>.
+2. Do not include Markdown fences or explanatory text.
+3. Do not use file writing or shell tools; stream the HTML in your reply so the caller can persist it.
+4. Preserve the existing head, fonts, styles, layout, DOM hierarchy, palette, grid, components, and animations unless the content change requires a specific alteration.
+5. Update only nodes corresponding to differences between the previous and new content.
+6. Add or remove repeated cards, rows, slides, or sections only when entries are added or removed; reuse the existing structure.
+7. Do not redesign, reformat or reorganize unrelated material for small edits.
+8. Do not invent data or add claims absent from the new source.
 
-【旧内容】
+[PREVIOUS CONTENT]
 ${args.oldContent}
 
-【新内容】
+[NEW CONTENT]
 ${args.newContent}
 
-【已有 HTML — 请基于此修改, 输出完整的修改后版本】
+[EXISTING HTML -- edit this and return the complete updated document]
 ${args.oldHtml}
 `;
 }
@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
   let prompt: string;
   if (editFromHtml && editFromContent) {
     prompt = buildEditPrompt({
-      templateName: skill.zhName,
+      templateName: skill.enName,
       templateAspect: skill.aspectHint,
       newContent: content,
       oldContent: editFromContent,

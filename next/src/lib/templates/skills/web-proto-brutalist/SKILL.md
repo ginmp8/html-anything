@@ -1,6 +1,5 @@
 ---
 name: web-proto-brutalist
-zh_name: "Brutalist 原型"
 en_name: "Brutalist Prototype"
 emoji: "⬛"
 description: "Swiss industrial-print 风: 单字 grotesque、巨数字、ASCII 装饰"

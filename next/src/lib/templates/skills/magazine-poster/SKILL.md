@@ -1,6 +1,5 @@
 ---
 name: magazine-poster
-zh_name: "杂志风海报"
 en_name: "Magazine Poster"
 emoji: "🗞️"
 description: "Sunday-paper 风格, 大字 serif headline + 双栏正文 + 编号 sections"

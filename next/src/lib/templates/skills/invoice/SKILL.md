@@ -1,6 +1,5 @@
 ---
 name: invoice
-zh_name: "可打印发票"
 en_name: "Printable Invoice"
 emoji: "🧾"
 description: "标准发票: 寄件/收件 + 明细 + 税 + 总额 + 付款指引"

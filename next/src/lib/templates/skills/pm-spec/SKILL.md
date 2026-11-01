@@ -1,6 +1,5 @@
 ---
 name: pm-spec
-zh_name: "PRD / 产品 Spec"
 en_name: "Product Spec / PRD"
 emoji: "🧭"
 description: "问题 + 成功指标 + 范围 + user stories + 设计 + 发布 + 待解决"

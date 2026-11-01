@@ -60,8 +60,7 @@ const {
     list: [
       {
         id: "valid-template",
-        zhName: "Valid Template",
-        enName: "Valid",
+        enName: "Valid Template",
         emoji: "📄",
         description: "A valid template",
         category: "doc",
@@ -75,8 +74,7 @@ const {
         "valid-template",
         {
           id: "valid-template",
-          zhName: "Valid Template",
-          enName: "Valid",
+          enName: "Valid Template",
           emoji: "📄",
           description: "A valid template",
           category: "doc",

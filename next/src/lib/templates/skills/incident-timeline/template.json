@@ -1,0 +1,19 @@
+{
+  "en_name": "Incident Timeline",
+  "emoji": "⏱️",
+  "category": "data",
+  "scenario": "engineering",
+  "aspect_hint": "Timeline and evidence ledger",
+  "tags": [
+    "incident",
+    "timeline",
+    "postmortem",
+    "observability",
+    "evidence"
+  ],
+  "example_id": "sample-incident-timeline",
+  "example_name": "Incident Timeline · Example",
+  "example_format": "markdown",
+  "example_tagline": "Evidence-linked detection through recovery",
+  "example_desc": "Synthetic incident with timestamps, phases, sources and open questions"
+}

@@ -1,6 +1,5 @@
 ---
 name: motion-frames
-zh_name: "动效英雄帧"
 en_name: "Motion Frames"
 emoji: "🌀"
 description: "可循环 CSS 动效组合: 旋转环、地球仪、计时器、视差标签"

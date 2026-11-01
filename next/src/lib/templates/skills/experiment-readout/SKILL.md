@@ -1,6 +1,5 @@
 ---
 name: experiment-readout
-zh_name: "实验复盘"
 en_name: "Experiment Readout"
 emoji: "🧪"
 description: "假设 + 指标 + 结果 + 解释 + 决策, 把 A/B 或产品实验转成行动建议"

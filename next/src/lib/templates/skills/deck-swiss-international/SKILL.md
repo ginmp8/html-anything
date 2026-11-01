@@ -1,6 +1,5 @@
 ---
 name: deck-swiss-international
-zh_name: "瑞士国际主义 Deck"
 en_name: "Swiss International Deck"
 emoji: "🟦"
 description: "16 列网格 + 单一饱和 accent + 22 个锁死版面 (Klein Blue / Lemon / Mint / Safety Orange)"

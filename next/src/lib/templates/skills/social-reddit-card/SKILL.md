@@ -1,6 +1,5 @@
 ---
 name: social-reddit-card
-zh_name: "Reddit 帖子卡"
 en_name: "Reddit Post Card"
 emoji: "🔺"
 description: "拟真 Reddit 帖子卡 + 上下投票 + 评论数, 适合视频叠加 / 故事分享"

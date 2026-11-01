@@ -1,6 +1,5 @@
 ---
 name: exec-briefing-memo
-zh_name: "高管决策简报"
 en_name: "Executive Briefing Memo"
 emoji: "⚖️"
 description: "Decision needed + recommendation + evidence + tradeoffs, 把复杂材料压成可拍板的一页"

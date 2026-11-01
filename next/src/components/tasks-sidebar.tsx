@@ -9,7 +9,6 @@ import { useT, type DictKey } from "@/lib/i18n";
 // Fallback so tasks render before the registry fetch completes.
 const FALLBACK_TPL = {
   id: "",
-  zhName: "—",
   enName: "—",
   emoji: "📄",
   description: "",
@@ -47,7 +46,6 @@ export function TasksSidebar() {
         if (task.content.toLowerCase().includes(trimmed)) return true;
         const tpl = templates?.find((x) => x.id === task.templateId);
         if (tpl) {
-          if (tpl.zhName.toLowerCase().includes(trimmed)) return true;
           if (tpl.enName.toLowerCase().includes(trimmed)) return true;
         }
         return false;
@@ -293,7 +291,6 @@ function TaskCard({
   const status = STATUS_DOT[task.status];
   const mounted = useMounted();
   const t = useT();
-  const locale = useStore((s) => s.locale);
 
   useEffect(() => {
     if (editing) {
@@ -362,7 +359,7 @@ function TaskCard({
           </div>
           <div className="mt-0.5 flex items-center gap-1 text-[10.5px] text-[var(--ink-mute)]">
             <span>{tpl.emoji}</span>
-            <span className="truncate">{locale === "en" ? tpl.enName : tpl.zhName}</span>
+            <span className="truncate">{tpl.enName}</span>
             {sizeKB && (
               <>
                 <span className="text-[var(--ink-faint)]">·</span>

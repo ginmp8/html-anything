@@ -1,6 +1,5 @@
 ---
 name: web-proto-soft
-zh_name: "Apple Soft 原型"
 en_name: "Apple-tier Soft Prototype"
 emoji: "🫧"
 description: "Apple 调: 银/奶 canvas + 双层斜面卡片 + button-in-button + spring"
