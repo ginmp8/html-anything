@@ -6,40 +6,40 @@ const { skillStore, invokeStore, setInvokeResult, resetStores } = vi.hoisted(() 
     templates: [
       {
         id: "resume-modern",
-        zhName: "极简简历",
+        zhName: "Minimalist Resume",
         enName: "Modern Resume",
         emoji: "📄",
-        description: "现代极简简历, A4 单页, 适合打印或导出 PDF",
+        description: "Modern A4 resume for print and PDF export",
         category: "resume",
         scenario: "personal",
         aspectHint: "A4",
-        tags: ["resume", "cv", "简历"],
+        tags: ["resume", "cv", "career"],
       },
       {
         id: "article-magazine",
-        zhName: "杂志文章",
+        zhName: "Magazine Article",
         enName: "Magazine Article",
         emoji: "📖",
-        description: "Substack / Medium 高级感长文排版, 适合公众号、博客发布",
+        description: "Substack and Medium-inspired editorial long-form publishing",
         category: "article",
         scenario: "marketing",
-        aspectHint: "A4 / 长页面",
-        tags: ["blog", "essay", "newsletter", "公众号", "博客", "文章"],
+        aspectHint: "A4 / long page",
+        tags: ["blog", "essay", "newsletter", "writing", "article"],
       },
       {
         id: "social-x-post-card",
-        zhName: "X (Twitter) 帖子卡",
+        zhName: "X (Twitter) Post Card",
         enName: "X / Twitter Post Card",
         emoji: "𝕏",
-        description: "拟真 X 推文卡片 + 互动数据, 适配视频叠加或图卡分享",
+        description: "Realistic X post card with engagement data",
         category: "card",
         scenario: "marketing",
-        aspectHint: "1280×720 或 1080×1080",
+        aspectHint: "1280x720 or 1080x1080",
         tags: ["twitter", "x", "social", "card", "overlay"],
       },
       {
         id: "deck-swiss-international",
-        zhName: "瑞士国际主义 Deck",
+        zhName: "Swiss International Deck",
         enName: "Swiss International Deck",
         emoji: "🇨🇭",
         description: "Swiss International Style presentation, clean grids",
@@ -50,68 +50,68 @@ const { skillStore, invokeStore, setInvokeResult, resetStores } = vi.hoisted(() 
       },
       {
         id: "pricing-page",
-        zhName: "定价页",
+        zhName: "Pricing Page",
         enName: "Pricing Page",
         emoji: "💳",
-        description: "三档定价 + 特性对比表 + FAQ",
+        description: "Three pricing tiers with comparison table and FAQ",
         category: "prototype",
         scenario: "sales",
-        aspectHint: "桌面 1440",
-        tags: ["pricing", "plans", "定价"],
+        aspectHint: "Desktop 1440",
+        tags: ["pricing", "plans", "tiers"],
       },
       {
         id: "team-okrs",
-        zhName: "团队 OKR 追踪",
+        zhName: "Team OKR Tracker",
         enName: "Team OKRs",
         emoji: "🎯",
-        description: "季度 banner + 3 个目标 + KR 进度条 + owner + 状态 pill",
+        description: "Quarterly objectives, key results, owners, and status indicators",
         category: "dashboard",
         scenario: "product",
-        aspectHint: "桌面 1440",
-        tags: ["okr", "objectives", "key results", "目标"],
+        aspectHint: "Desktop 1440",
+        tags: ["okr", "objectives", "key results", "goals"],
       },
       {
         id: "eng-runbook",
-        zhName: "工程 Runbook",
+        zhName: "Engineering Runbook",
         enName: "Engineering Runbook",
         emoji: "📕",
-        description: "服务概述 + alerts 表 + dashboards + 操作命令 + on-call",
+        description: "Service overview, alert table, dashboards and on-call procedures",
         category: "doc",
         scenario: "engineering",
-        aspectHint: "长页面",
+        aspectHint: "Long page",
         tags: ["runbook", "ops", "oncall", "sre"],
       },
       {
         id: "kanban-board",
-        zhName: "看板",
+        zhName: "Kanban Board",
         enName: "Kanban Board",
         emoji: "📋",
         description: "Kanban board with columns",
         category: "dashboard",
         scenario: "operations",
-        aspectHint: "桌面 1440",
+        aspectHint: "Desktop 1440",
         tags: ["kanban", "board", "todo", "doing", "done"],
       },
       {
         id: "weekly-update",
-        zhName: "团队周报 Deck",
+        zhName: "Weekly Update Deck",
         enName: "Weekly Update Deck",
         emoji: "🗓️",
-        description: "6-8 页横向滑动周报: 已发布 / 进行中 / 阻塞 / 指标 / 求助",
+        description: "Weekly update slides: shipped, in progress, blockers, metrics, requests",
         category: "slides",
         scenario: "operations",
         aspectHint: "16:9 ×8",
-        tags: ["weekly", "周报", "status"],
+        tags: ["weekly", "report", "status"],
       },
       {
         id: "docs-page",
-        zhName: "技术文档页",
+        zhName: "Technical Documentation Page",
         enName: "Documentation Page",
         emoji: "📚",
-        description: "技术文档页, 带侧边栏导航",
+        description: "Technical documentation page with sidebar navigation",
         category: "doc",
         scenario: "engineering",
-        aspectHint: "桌面 1440",
+        aspectHint: "Desktop 1440",
         tags: ["docs", "documentation", "doc"],
       },
     ] as const,
@@ -256,11 +256,11 @@ describe("kwMatches", () => {
   });
 
   it("uses substring matching for CJK characters", () => {
-    expect(kwMatches("这是一份简历内容", "简历")).toBe(true);
+    expect(kwMatches(String.fromCodePoint(0x8fd9,0x662f,0x7b80,0x5386), String.fromCodePoint(0x7b80,0x5386))).toBe(true);
   });
 
   it("uses substring matching for mixed CJK in text", () => {
-    expect(kwMatches("关于定价方案", "定价")).toBe(true);
+    expect(kwMatches(String.fromCodePoint(0x5173,0x4e8e,0x5b9a,0x4ef7), String.fromCodePoint(0x5b9a,0x4ef7))).toBe(true);
   });
 
   it("case-insensitive for ASCII keywords", () => {
@@ -274,9 +274,9 @@ describe("kwMatches", () => {
 });
 
 describe("matchTemplate strong-signal matching", () => {
-  it("matches Chinese resume content to resume-modern", async () => {
+  it("matches English resume content to resume-modern", async () => {
     const result = await matchTemplate(
-      "简历\n工作经历: 某公司\n教育背景: 清华",
+      "Resume\nWork experience: Example Company\nEducation: Example University",
       skillStore.templates as any,
       SKILLS_DIR,
       AGENT_ID,
@@ -296,7 +296,7 @@ describe("matchTemplate strong-signal matching", () => {
 
   it("matches pricing content to pricing-page", async () => {
     const result = await matchTemplate(
-      "定价方案\n免费版: 100次\n专业版: 10000次",
+      "Pricing plans\nFree tier: 100 requests\nProfessional plan: 10000 requests",
       skillStore.templates as any,
       SKILLS_DIR,
       AGENT_ID,
@@ -306,7 +306,7 @@ describe("matchTemplate strong-signal matching", () => {
 
   it("matches OKR content to team-okrs", async () => {
     const result = await matchTemplate(
-      "Q1 OKRs\n目标1: 用户增长\n关键结果: DAU +50%",
+      "Q1 OKRs\nObjective 1: User growth\nKey results: DAU +50%",
       skillStore.templates as any,
       SKILLS_DIR,
       AGENT_ID,
@@ -390,9 +390,9 @@ describe("matchTemplate word-boundary prevents false positives", () => {
 });
 
 describe("matchTemplate blog/article matching", () => {
-  it("matches blog content to article-magazine (contains 公众号, 写作)", async () => {
+  it("matches blog content to article-magazine (newsletter and writing)", async () => {
     const result = await matchTemplate(
-      "# AI Agent 时代的文档写作\n\n在 AI agent 接管编码工作的今天，文档的最终产出格式应该是什么？\n\n## 实践建议\n\n- 使用 HTML Anything 一键转换\n- 导出到公众号、推特、知乎",
+      "# Writing Documentation in the AI Agent Era\n\nAs AI agents handle more coding work, what format should readers get?\n\n## Recommendations\n\n- Convert with HTML Anything\n- Publish in newsletters and on X",
       skillStore.templates as any,
       SKILLS_DIR,
       AGENT_ID,
@@ -414,7 +414,7 @@ describe("matchTemplate fallback matching", () => {
 
   it("returns confidence <= 10", async () => {
     const result = await matchTemplate(
-      "简历\n工作经历: ABC公司\n教育背景: 北京大学",
+      "Resume\nWork experience: ABC Company\nEducation: Example University",
       skillStore.templates as any,
       SKILLS_DIR,
       AGENT_ID,
@@ -448,10 +448,10 @@ describe("matchTemplate short content handling", () => {
 
 describe("matchTemplate --force-ai", () => {
   it("with --force-ai reaches AI summary instead of rule match", async () => {
-    setInvokeResult("技术博客");
+    setInvokeResult("technical blog");
 
     const result = await matchTemplate(
-      "# AI Agent 时代的文档写作\n\n在 AI agent 接管编码工作的今天，文档的最终产出格式应该是什么？\n\n## 为什么 HTML 比 Markdown 更好\n\nMarkdown 是一个好的草稿格式，但它无法控制排版、色彩、动画和阅读体验。",
+      "# Writing Documentation in the AI Agent Era\n\nAs AI agents increasingly handle coding tasks, what should our final documentation look like?\n\n## Why HTML Beats Markdown\n\nMarkdown is a useful draft format but cannot fully control typography, color, animation and the reading experience.",
       skillStore.templates as any,
       SKILLS_DIR,
       AGENT_ID,
@@ -459,15 +459,15 @@ describe("matchTemplate --force-ai", () => {
     );
 
     expect(result.templateId).toBeTruthy();
-    expect(result.reason).toContain("最佳匹配:");
-    expect(result.reason).not.toContain("关键词命中:");
+    expect(result.reason).toContain("Best match:");
+    expect(result.reason).not.toContain("Keyword match:");
   });
 
   it("with --force-ai and AI error falls back to rule match", async () => {
     setInvokeResult("", "Some error");
 
     const result = await matchTemplate(
-      "简历\n工作经历: ABC公司\n教育背景: 北京大学",
+      "Resume\nWork experience: ABC Company\nEducation: Example University",
       skillStore.templates as any,
       SKILLS_DIR,
       AGENT_ID,
@@ -480,22 +480,22 @@ describe("matchTemplate --force-ai", () => {
 describe("matchTemplate reason output", () => {
   it("includes keyword hits in strong-signal reason", async () => {
     const result = await matchTemplate(
-      "个人简历\n\n工作经历: ABC科技有限公司, 高级前端工程师, 2021年至今\n教育背景: 北京大学, 计算机科学学士, 2014-2018",
+      "Personal resume\n\nWork experience: ABC Technology, Senior Frontend Engineer, 2021 to present\nEducation: Example University, BSc Computer Science, 2014-2018",
       skillStore.templates as any,
       SKILLS_DIR,
       AGENT_ID,
     );
-    expect(result.reason).toContain("关键词命中:");
-    expect(result.reason).toContain("简历");
+    expect(result.reason).toContain("Keyword match:");
+    expect(result.reason).toContain("resume");
   });
 
   it("includes zhName in result", async () => {
     const result = await matchTemplate(
-      "简历\n工作经历: ABC公司",
+      "Resume\nWork experience: ABC Company",
       skillStore.templates as any,
       SKILLS_DIR,
       AGENT_ID,
     );
-    expect(result.zhName).toBe("极简简历");
+    expect(result.zhName).toBe("Minimalist Resume");
   });
 });
