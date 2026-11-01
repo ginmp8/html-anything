@@ -1,6 +1,5 @@
 ---
 name: mobile-onboarding
-zh_name: "App 引导多屏"
 en_name: "Mobile Onboarding"
 emoji: "🪂"
 description: "三个手机框并排: splash / value-prop / sign-in"

@@ -1,6 +1,5 @@
 ---
 name: mobile-app
-zh_name: "iPhone App 单屏"
 en_name: "Mobile App Screen"
 emoji: "📲"
 description: "像素级 iPhone 15 Pro 边框, 一屏 app 截图"

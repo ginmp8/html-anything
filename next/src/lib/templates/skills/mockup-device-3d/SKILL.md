@@ -1,6 +1,5 @@
 ---
 name: mockup-device-3d
-zh_name: "iPhone × MacBook 立体展架"
 en_name: "Device 3D Showcase"
 emoji: "📱"
 description: "iPhone + MacBook 仿 GLTF 静态展架, 屏幕内嵌真实 HTML 内容, 玻璃镜头折射, 360° 转盘构图"

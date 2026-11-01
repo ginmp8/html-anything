@@ -1,6 +1,5 @@
 ---
 name: kanban-board
-zh_name: "看板 / Kanban"
 en_name: "Kanban Board"
 emoji: "📌"
 description: "To do / In progress / In review / Done 四列, 卡片 + 头像 + 泳道"
