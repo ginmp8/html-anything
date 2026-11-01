@@ -43,7 +43,6 @@ async function tarGzDir(dir: string, outPath: string): Promise<void> {
 
 const VALID_SKILL_MD = `---
 name: x
-zh_name: X
 en_name: X
 emoji: "✅"
 description: x

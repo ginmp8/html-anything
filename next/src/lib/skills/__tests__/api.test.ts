@@ -13,7 +13,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const SKILL_MD = `---
 name: api-test
-zh_name: API
 en_name: API Test
 emoji: "🔌"
 description: api test

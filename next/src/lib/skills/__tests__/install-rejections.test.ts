@@ -15,7 +15,6 @@ import { userSkillsDir } from "../paths";
 
 const VALID_SKILL_MD = `---
 name: t
-zh_name: Test
 en_name: T
 emoji: "🧪"
 description: test

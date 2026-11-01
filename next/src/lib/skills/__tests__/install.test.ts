@@ -15,7 +15,6 @@ import { userSkillsDir, makeSkillId } from "../paths";
 
 const SKILL_MD = `---
 name: hello-world
-zh_name: Test Skill
 en_name: Hello World
 emoji: "👋"
 description: a test skill

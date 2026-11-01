@@ -162,7 +162,7 @@ describe("tarball preflight", () => {
     await fs.mkdir(wrapper, { recursive: true });
     await fs.writeFile(
       path.join(wrapper, "SKILL.md"),
-      `---\nname: x\nzh_name: X\nen_name: X\nemoji: "✅"\ndescription: x\ncategory: article\nscenario: marketing\naspect_hint: a\ntags: ["x"]\n---\nbody\n`,
+      `---\nname: x\nen_name: X\nemoji: "✅"\ndescription: x\ncategory: article\nscenario: marketing\naspect_hint: a\ntags: ["x"]\n---\nbody\n`,
       "utf8",
     );
     const tarballPath = path.join(tmpRoot, "fixtures", "happy.tar.gz");
