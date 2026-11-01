@@ -1,21 +1,21 @@
 ---
 name: deck-hermes-cyber
-zh_name: "Cyber Terminal Deck"
+zh_name: "Hermes Cyber Terminal Deck"
 en_name: "Hermes Cyber Terminal Deck"
 emoji: "🟢"
-description: "黑底 + CRT 网格扫描线 + $ 命令行标题 + 薄荷绿大字 + 三档 tag"
+description: "Create a terminal-inspired cyber deck for CLI, agent and developer-tool evaluation with traces, diffs and benchmarks."
 category: slides
 scenario: engineering
 aspect_hint: "16:9"
 featured: 30
-tags: ["cyber", "terminal", "review", "cli"]
+tags: ["cyber","terminal","review","cli"]
 ---
 
-【模板: Hermes Cyber Terminal Deck】
-【意图】CLI / agent / dev tool 测评 deck (含 trace, diff, benchmark)。
-【布局】
-- #0a0c10 黑底 + 56px 赛博网格 + CRT 暗角
-- 窗口红绿灯 chrome + `$ prompt` 标题
-- 薄荷绿 #7ed3a4 大字 + JetBrains Mono
-- Stroke-only 柱状图 + blinking 光标
-- 琥珀 / 绿 / 红 三档 tag
+# Hermes Cyber Terminal Deck
+Use for technical CLI or agent reviews that contain traces, diffs or benchmark evidence.
+- Set a near-black #0a0c10 background with a 56px terminal grid, subtle CRT scanlines and dark vignette.
+- Use window chrome inspired by a terminal, including small status dots and dollar-sign prompt headings.
+- Headlines use bright mint #7ed3a4 and a JetBrains Mono-like typeface.
+- Use outline-only bar charts for actual numeric data and a restrained blinking cursor.
+- Label comparisons with amber, green or red status chips plus text, never color alone.
+- Never invent performance values or imply a CLI command was executed without evidence.

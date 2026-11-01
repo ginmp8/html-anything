@@ -1,20 +1,20 @@
 ---
 name: deck-obsidian-claude
-zh_name: "GitHub Dark 紫渐变 Deck"
+zh_name: "Obsidian Claude Gradient Deck"
 en_name: "Obsidian Claude Gradient Deck"
 emoji: "🌃"
-description: "GitHub-dark + 紫蓝环境光 + 三色渐变标题 + GitHub 风代码"
+description: "Create a developer tutorial deck in a GitHub-dark aesthetic with purple ambient lighting and gradient titles."
 category: slides
 scenario: engineering
 aspect_hint: "16:9"
 featured: 31
-tags: ["github", "dark", "purple", "mcp", "agent"]
+tags: ["github","dark","purple","mcp","agent"]
 ---
 
-【模板: Obsidian Claude Gradient Deck】
-【意图】类 GitHub Blog / Linear Changelog 的开发者教程 deck。
-【布局】
-- GitHub-dark #0d1117 + 紫蓝 radial 环境光 + 60px 网格 mask
-- 居中布局 + 紫色 pill tag
-- 三色渐变标题 (#a855f7→#60a5fa→#34d399)
-- GitHub 风代码 palette + 紫色左边框高亮块
+# Obsidian Claude Developer Deck
+A developer-focused deck inspired by GitHub blog and Linear changelog aesthetics.
+- Use GitHub-dark #0d1117 with a subtle purple-blue radial ambiance and 60px grid mask.
+- Center key content within a balanced layout and use small purple pill-shaped section labels.
+- Give major headings a restrained gradient from #a855f7 through #60a5fa to #34d399.
+- Style code in a GitHub-like palette with purple left-bordered callout blocks.
+- Preserve accurate command syntax, API behavior and technical references. Include accessible navigation.

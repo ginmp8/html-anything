@@ -1,25 +1,25 @@
 ---
 name: card-twitter
-zh_name: "Twitter 分享卡"
+zh_name: "Twitter Share Card"
 en_name: "Twitter Share Card"
 emoji: "🐦"
-description: "推特金句 / 数据卡, 适合配推文"
+description: "Design a shareable 16:9 quote or insight card for X/Twitter with focused typography and subtle texture."
 category: card
 scenario: marketing
 aspect_hint: "1600×900 (16:9)"
-tags: ["twitter", "x", "quote", "金句"]
+tags: ["twitter","x","quote"]
 example_id: sample-twitter-quote
-example_name: "推特卡 · 金句"
+example_name: "X Quote Card · Key Insight"
 example_format: text
-example_tagline: "16:9 暗色金句卡, 截图直接配推文"
-example_desc: "高对比金句模板, 含 grid 网格 + 渐变光晕背景"
+example_tagline: "High-contrast 16:9 quote card ready for a social image"
+example_desc: "Editorial quote treatment with a subtle grid texture and atmospheric background."
 ---
 
-【模板: Twitter 分享卡】
-- 容器 `w-[1600px] h-[900px]`, 暗色 / 亮色二选一根据内容情绪。
-- 中央一句 hero 金句 (text-6xl, font-semibold, 限 2-3 行)。
-- 下方作者署名 + 头像占位 + handle。
-- 左上角小标签 (类型: "Insight" / "Data" / "Quote")。
-- 右下角品牌水印。
-- 整张卡片有微妙的纹理 (grid 网格 / noise / dot pattern)。
-- 截图后可直接配推文发出, 视觉简洁有力。
+# X / Twitter Quote Card
+Produce a single 1600×900 image-ready HTML card; choose light or dark styling based on the supplied message.
+- Center one large headline or quote, about 60px, preferably two or three lines, without truncating source text.
+- Put the actual author/byline and handle below when supplied; do not invent avatars or identities.
+- Add a small category label such as Insight, Data or Quote at upper left when useful.
+- Place a modest brand label at lower right only when supplied by the user.
+- Use a delicate grid, grain or dot pattern and ample negative space so the content stays dominant.
+- Maintain high contrast at screenshot size and avoid fake engagement numbers.

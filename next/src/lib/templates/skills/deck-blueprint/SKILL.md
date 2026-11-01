@@ -1,22 +1,21 @@
 ---
 name: deck-blueprint
-zh_name: "蓝图架构 Deck"
+zh_name: "Knowledge Arch Blueprint"
 en_name: "Knowledge Arch Blueprint"
 emoji: "📐"
-description: "奶油纸 + 锈红 + 蓝图网格 mask + 黑边硬卡片 + pipeline 盒"
+description: "Create print-friendly architecture slides with a cream blueprint grid, pipeline boxes and restrained rust-red insights."
 category: slides
 scenario: engineering
 aspect_hint: "16:9"
 featured: 29
-tags: ["blueprint", "architecture", "engineering"]
+tags: ["blueprint","architecture","engineering"]
 ---
 
-【模板: Knowledge Arch Blueprint Deck】
-【意图】认真的、印刷友好的架构 / pipeline 讲解 deck。
-【布局】
-- 奶油 #F0EAE0 底 + 蓝图 48px 网格 mask
-- Pipeline 步骤盒 (其中一个抬高)
-- 右侧锈红 #B5392A insight callout
-- Playfair serif 大字 + SVG 虚线反馈环
-【设计细节】
-- 零渐变零软阴影
+# Knowledge Architecture Blueprint Deck
+Make a serious, print-friendly technical architecture or pipeline presentation.
+- Use cream paper background #F0EAE0 and a subtle 48px blueprint grid.
+- Represent process stages as connected rectangular boxes; selectively raise the main step to signal hierarchy.
+- Place a concise rust-red (#B5392A) insight callout to the right of the system diagram.
+- Use large Playfair-style serif headings and dashed SVG feedback loops when those connections are supported.
+- Avoid gradients and soft drop shadows. Prioritize information hierarchy, accurate edges and readable labels.
+- Let actual workflow complexity determine slide count; do not add fictitious components.

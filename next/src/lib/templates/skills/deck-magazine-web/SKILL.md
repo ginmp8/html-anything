@@ -1,24 +1,20 @@
 ---
 name: deck-magazine-web
-zh_name: "杂志风网页 PPT"
+zh_name: "Magazine Web Deck"
 en_name: "Magazine Web Deck"
 emoji: "📰"
-description: "电子杂志 × 电子墨水风, WebGL 流体背景 + 衬线 display"
+description: "Create an editorial e-ink-inspired horizontal HTML slide deck with serif typography and expressive magazine layouts."
 category: slides
 scenario: marketing
-aspect_hint: "16:9 横向翻页"
+aspect_hint: "16:9 horizontal slides"
 featured: 9
-tags: ["magazine", "editorial", "e-ink", "horizontal swipe"]
+tags: ["magazine","editorial","e-ink","horizontal swipe"]
 ---
 
-【模板: 杂志风网页 PPT (magazine-web-ppt)】
-【意图】horizontal-swipe HTML deck, 杂志 × e-ink 调。
-【布局】
-- Cover (衬线 display + WebGL 流体背景)
-- 章节幕封页
-- 数据大字报页 (一个巨数字 + 一句解释)
-- 图片网格页
-- 金句页 (Sunday-paper 风)
-【设计细节】
-- 字体: Playfair / Noto Serif SC display + Inter / 思源 sans body
-- 键盘 ← / → 切换; hash 同步
+# Editorial Magazine Web Deck
+Create a horizontal-swipe 16:9 HTML slide deck with a restrained magazine/e-ink reading aesthetic.
+- Cover: prominent serif display typography and an abstract fluid background when it helps the story.
+- Introduce act dividers between chapters; follow with large-number evidence slides, image grids and memorable quote slides.
+- Use Playfair or another readable editorial serif for headlines and Inter-like sans serif for body text.
+- Support left/right arrow navigation and URL-hash synchronization.
+- Derive slide count and chart content from the user's actual material, never invented illustrations or statistics.

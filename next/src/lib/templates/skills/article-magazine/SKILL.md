@@ -1,29 +1,30 @@
 ---
 name: article-magazine
-zh_name: "杂志文章"
+zh_name: "Magazine Article"
 en_name: "Magazine Article"
 emoji: "📖"
-description: "Substack / Medium 高级感长文排版, 适合公众号、博客发布"
+description: "Publish an editorial magazine-style long-form article with a prominent headline, readable body, pull quotes and share card."
 category: article
 scenario: marketing
-aspect_hint: "A4 / 长页面"
+aspect_hint: "A4 / long-form page"
 featured: 11
-tags: ["blog", "essay", "newsletter", "公众号", "博客", "文章"]
+tags: ["blog","essay","newsletter"]
 example_id: sample-article-trq212-html
-example_name: "杂志文章 · HTML 取代 Markdown"
+example_name: "Magazine Article · HTML over Markdown"
 example_format: markdown
-example_tagline: "灵感来自 @trq212 的推文"
-example_desc: "围绕「AI 时代 HTML > Markdown」的延伸评论, 含原推附注与可点击链接"
+example_tagline: "Inspired by a discussion from @trq212"
+example_desc: "An editorial on why HTML is useful for publishing in the agent era, with source attribution and working links."
 example_source_url: "https://x.com/trq212/status/2052809885763747935"
 example_source_label: "@trq212 / x.com"
 ---
 
-【模板: 杂志文章】
-- 顶部 hero: 大标题 (text-5xl/6xl) + 可选副标题 + 作者 / 阅读时间 / 日期元数据。
-- 正文: 单栏, 最大宽度约 700px, 居中。段落 `text-lg leading-relaxed text-neutral-700 dark:text-neutral-300`。
-- H2 / H3 标题用 serif 字体, 让正文与标题有视觉对比。
-- 引用块使用左侧粗 accent 色边线 + 斜体。
-- 代码块: 圆角 + 深色背景 + 浅色文字, 显示语言标签。
-- 列表项使用自定义 bullet（小方块 / accent 圆点）。
-- 章节之间用 `<hr>` 分隔, 但样式做成中央居中的小 ornament。
-- 文末加一个简单的 "如果觉得有用，欢迎转发" 行动卡片。
+# Magazine Article
+Use for long-form editorial content with a high-end magazine reading experience.
+
+- Build a hero with a 5xl–6xl headline, optional subheading, author, reading time and date; do not fabricate bylines or dates.
+- Use a centered single-column article (about 700px maximum width), with generous line height and legible 18px body copy.
+- Use restrained serif styling for H2/H3 to distinguish headings from body text.
+- Style blockquotes with an accent rule and italic emphasis. Code examples use a dark panel, readable syntax and a language label.
+- Use distinctive but unobtrusive list markers and small ornamental rules between major chapters.
+- End with a simple share call-to-action when appropriate; never invent attribution or links.
+- Let the source content determine article length and chapter count.
