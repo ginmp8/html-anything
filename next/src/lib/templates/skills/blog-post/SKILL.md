@@ -1,6 +1,5 @@
 ---
 name: blog-post
-zh_name: "Blog Post"
 en_name: "Blog Post"
 emoji: "📰"
 description: "Format a substantial editorial blog post with masthead, hero, figures, pull quotes, author details and related reading."

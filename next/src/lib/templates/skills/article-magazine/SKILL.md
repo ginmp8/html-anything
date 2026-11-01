@@ -1,6 +1,5 @@
 ---
 name: article-magazine
-zh_name: "Magazine Article"
 en_name: "Magazine Article"
 emoji: "📖"
 description: "Publish an editorial magazine-style long-form article with a prominent headline, readable body, pull quotes and share card."

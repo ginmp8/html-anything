@@ -1,6 +1,5 @@
 ---
 name: deck-dir-key-nav
-zh_name: "Dir-Key Nav Minimal Deck"
 en_name: "Dir-Key Nav Minimal Deck"
 emoji: "▶︎"
 description: "Produce an intentionally minimal keyboard-navigated keynote deck with bold typography and solid-color slides."

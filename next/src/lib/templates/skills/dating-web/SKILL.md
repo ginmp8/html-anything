@@ -1,6 +1,5 @@
 ---
 name: dating-web
-zh_name: "Dating / Community Dashboard"
 en_name: "Dating / Community Dashboard"
 emoji: "💞"
 description: "Build a polished consumer community and matching dashboard with signal ticker, KPIs, a 30-day bar chart and a match-rate trend."

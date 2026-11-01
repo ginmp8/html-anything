@@ -1,6 +1,5 @@
 ---
 name: competitive-teardown
-zh_name: "竞品拆解"
 en_name: "Competitive Teardown"
 emoji: "🧩"
 description: "定位图 + 功能矩阵 + 价格对比 + 机会窗口, 把竞品资料转成产品决策报告"

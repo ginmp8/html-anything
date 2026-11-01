@@ -1,6 +1,5 @@
 ---
 name: deck-blueprint
-zh_name: "Knowledge Arch Blueprint"
 en_name: "Knowledge Arch Blueprint"
 emoji: "📐"
 description: "Create print-friendly architecture slides with a cream blueprint grid, pipeline boxes and restrained rust-red insights."

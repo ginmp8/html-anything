@@ -1,6 +1,5 @@
 ---
 name: deck-course-module
-zh_name: "Course Module Deck"
 en_name: "Course Module Deck"
 emoji: "🎓"
 description: "Create a course or workshop slide deck with persistent learning objectives, examples and multiple-choice knowledge checks."

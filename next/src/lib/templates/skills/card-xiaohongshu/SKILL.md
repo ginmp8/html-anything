@@ -1,6 +1,5 @@
 ---
 name: card-xiaohongshu
-zh_name: "Xiaohongshu Card"
 en_name: "Xiaohongshu Card"
 emoji: "📱"
 description: "Create a scrollable sequence of 3:4 Xiaohongshu-style knowledge cards with one insight per card and a consistent pastel identity."

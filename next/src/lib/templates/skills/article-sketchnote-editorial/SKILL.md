@@ -1,6 +1,5 @@
 ---
 name: article-sketchnote-editorial
-zh_name: "编辑式视觉笔记"
 en_name: "Editorial Sketchnote"
 emoji: "📒"
 description: "把一个概念铸成杂志专题档案——真问题→失败→转折→顿悟→命名, 6 个 layout 模具 + 4 字族对比 + 探案档案细节"

@@ -1,6 +1,5 @@
 ---
 name: card-twitter
-zh_name: "Twitter Share Card"
 en_name: "Twitter Share Card"
 emoji: "🐦"
 description: "Design a shareable 16:9 quote or insight card for X/Twitter with focused typography and subtle texture."
