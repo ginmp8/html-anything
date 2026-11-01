@@ -168,7 +168,7 @@ export function TemplatePicker() {
       return [{ key: "_results", label: "", items: filtered }];
     }
 
-    // default "全部" view: 推荐 group first, then scenarios (with recommended templates removed
+    // default "All" view: Featured group first, then scenarios (with recommended templates removed
     // so each template appears once)
     const recommendedItems = filtered
       .filter((tpl) => typeof tpl.recommended === "number")

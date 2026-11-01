@@ -355,10 +355,10 @@ Sales by quarter — FY26 closed with Q4 at $250k (projected) and FY27 starting 
 ];
 
 const KIND_LABEL: Record<FormatKind, { en: string; zh: string; tint: string }> = {
-  text: { en: "Text", zh: "文本", tint: "rgba(35,72,184,0.10)" },
-  data: { en: "Data", zh: "数据", tint: "rgba(31,122,58,0.10)" },
-  code: { en: "Code", zh: "代码", tint: "rgba(108,58,166,0.10)" },
-  image: { en: "Image", zh: "图片", tint: "rgba(201,100,66,0.12)" },
+  text: { en: "Text", zh: "Text", tint: "rgba(35,72,184,0.10)" },
+  data: { en: "Data", zh: "Data", tint: "rgba(31,122,58,0.10)" },
+  code: { en: "Code", zh: "Code", tint: "rgba(108,58,166,0.10)" },
+  image: { en: "Image", zh: "Image", tint: "rgba(201,100,66,0.12)" },
 };
 
 export function FormatsGallery({ onLoaded }: { onLoaded?: () => void }) {

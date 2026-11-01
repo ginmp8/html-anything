@@ -27,7 +27,7 @@ afterEach(() => {
 describe("CLI template.json metadata compatibility", () => {
   it("reads valid display fields without replacing the skill instructions", () => {
     const root = fixture(JSON.stringify({
-      zh_name: "演示", en_name: "Demo Report", scenario: "engineering",
+      zh_name: "Demo", en_name: "Demo Report", scenario: "engineering",
       category: "doc", featured: 2, tags: ["docs"],
       name: "malicious-name", description: "Sidecar cannot replace activation",
     }));
