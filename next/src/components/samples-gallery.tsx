@@ -21,7 +21,6 @@ export function SamplesGallery({ onLoaded }: { onLoaded?: () => void }) {
   const templates = useTemplates();
   const loadSample = useStore((s) => s.loadSample);
   const tasks = useStore((s) => s.tasks);
-  const locale = useStore((s) => s.locale);
   const t = useT();
   const [filter, setFilter] = useState<string>("all");
   const [loadingId, setLoadingId] = useState<string | null>(null);
@@ -191,7 +190,6 @@ function SampleCard({
   onLoad: () => void;
 }) {
   const t = useT();
-  const locale = useStore((s) => s.locale);
   const example = tpl.example;
   const previewUrl = `/api/templates/${encodeURIComponent(tpl.id)}/preview`;
   return (
