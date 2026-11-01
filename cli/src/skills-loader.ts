@@ -165,6 +165,17 @@ function readTemplateMetadata(dir: string): Partial<SkillFrontmatter> {
   ) {
     fm.tags = data.tags as string[];
   }
+  // Picker source links are untrusted metadata: never allow script/data schemes.
+  if (fm.example_source_url) {
+    try {
+      const url = new URL(fm.example_source_url);
+      if (url.protocol !== "https:" && url.protocol !== "http:") {
+        delete fm.example_source_url;
+      }
+    } catch {
+      delete fm.example_source_url;
+    }
+  }
   return fm;
 }
 

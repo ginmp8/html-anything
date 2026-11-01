@@ -46,6 +46,15 @@ describe("CLI template.json metadata compatibility", () => {
     expect(loadSkill(root, "demo")?.description).toBe("Canonical portable activation description.");
   });
 
+
+  it("rejects unsafe example source URLs", () => {
+    const root = fixture(JSON.stringify({
+      example_id: "sample", example_source_url: "javascript:alert(1)",
+      example_source_label: "Open",
+    }));
+    expect(listSkills(root)[0].example?.source).toBeUndefined();
+  });
+
   it("ignores invalid metadata values instead of rendering them", () => {
     const root = fixture(JSON.stringify({ en_name: 123, featured: -2, tags: [1, null] }));
     expect(listSkills(root)[0]).toMatchObject({
