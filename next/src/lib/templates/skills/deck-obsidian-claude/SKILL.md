@@ -1,6 +1,5 @@
 ---
 name: deck-obsidian-claude
-zh_name: "Obsidian Claude Gradient Deck"
 en_name: "Obsidian Claude Gradient Deck"
 emoji: "🌃"
 description: "Create a developer tutorial deck in a GitHub-dark aesthetic with purple ambient lighting and gradient titles."

@@ -1,6 +1,5 @@
 ---
 name: deck-safety-alert
-zh_name: "安全 / 风险红色 Deck"
 en_name: "Testing / Safety Alert Deck"
 emoji: "⚠️"
 description: "红琥珀警示色 + hazard 条纹 + L1/L2/L3 tier 卡片 + 删除线标题"

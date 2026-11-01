@@ -1,6 +1,5 @@
 ---
 name: deck-guizang-editorial
-zh_name: "贵赞编辑墨水 Deck"
 en_name: "Guizang Editorial E-Ink Deck"
 emoji: "🖋️"
 description: "电子杂志 × 电子墨水; 10 个版面 + 5 套调色板 (墨水/靛蓝瓷/森林墨/牛皮纸/沙丘)"

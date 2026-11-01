@@ -1,6 +1,5 @@
 ---
 name: deck-presenter-mode
-zh_name: "Presenter Mode Deck"
 en_name: "Presenter Mode Deck"
 emoji: "🎤"
 description: "Create a presentation with speaker notes and a keyboard-controlled teleprompter popup, including current and next slides."

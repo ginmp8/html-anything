@@ -1,6 +1,5 @@
 ---
 name: deck-magazine-web
-zh_name: "Magazine Web Deck"
 en_name: "Magazine Web Deck"
 emoji: "📰"
 description: "Create an editorial e-ink-inspired horizontal HTML slide deck with serif typography and expressive magazine layouts."

@@ -1,6 +1,5 @@
 ---
 name: deck-hermes-cyber
-zh_name: "Hermes Cyber Terminal Deck"
 en_name: "Hermes Cyber Terminal Deck"
 emoji: "🟢"
 description: "Create a terminal-inspired cyber deck for CLI, agent and developer-tool evaluation with traces, diffs and benchmarks."

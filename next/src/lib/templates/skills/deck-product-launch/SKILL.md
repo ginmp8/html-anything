@@ -1,6 +1,5 @@
 ---
 name: deck-product-launch
-zh_name: "Product Launch Deck"
 en_name: "Product Launch Deck"
 emoji: "🎉"
 description: "Create a keynote-style new product launch deck with dark hero slides, lighter feature content and orange-peach accents."

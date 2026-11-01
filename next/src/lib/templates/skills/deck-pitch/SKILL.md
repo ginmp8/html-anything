@@ -1,6 +1,5 @@
 ---
 name: deck-pitch
-zh_name: "Investor Pitch Deck"
 en_name: "Investor Pitch Deck"
 emoji: "🚀"
 description: "Structure an investor pitch deck around problem, solution, product, market, traction, team and the funding request."

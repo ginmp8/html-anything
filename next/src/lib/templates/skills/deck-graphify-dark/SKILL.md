@@ -1,6 +1,5 @@
 ---
 name: deck-graphify-dark
-zh_name: "Graphify Dark Deck"
 en_name: "Graphify Dark Deck"
 emoji: "🌌"
 description: "Create an AI-native knowledge-graph deck with deep-night gradients, glowing orbs, SVG network views and code slides."

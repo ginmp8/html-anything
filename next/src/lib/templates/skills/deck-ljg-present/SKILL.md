@@ -1,6 +1,5 @@
 ---
 name: deck-ljg-present
-zh_name: "宣言式演讲（Outline-Faithful）"
 en_name: "Outline-Faithful Manifesto Deck"
 emoji: "✊"
 description: "把 outline 1:1 铸成色块大字宣言 deck, 原文不动只做美化。三档主题 black / red / yellow"

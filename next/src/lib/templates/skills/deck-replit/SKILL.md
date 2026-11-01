@@ -1,6 +1,5 @@
 ---
 name: deck-replit
-zh_name: "Replit Slides 风 Deck"
 en_name: "Replit Slides Deck"
 emoji: "🟣"
 description: "Replit Slides 八套主题 (helix/holm/vance/bevel/world/atlas/bluehouse)"
