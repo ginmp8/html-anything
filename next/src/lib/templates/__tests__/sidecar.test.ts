@@ -4,6 +4,7 @@ import { listSkills, loadSkill } from "../loader";
 describe("portable bundled skill metadata", () => {
   it("loads canonical skill bodies and picker-only metadata", () => {
     const skills = listSkills();
+    expect(skills.every((skill) => Object.keys(skill).filter((key) => key.endsWith("Name")).join() === "enName")).toBe(true);
     const incident = skills.find((skill) => skill.id === "incident-timeline");
     const architecture = skills.find((skill) => skill.id === "system-architecture-map");
     expect(incident).toMatchObject({

@@ -6,7 +6,6 @@ const { skillStore, invokeStore, setInvokeResult, resetStores } = vi.hoisted(() 
     templates: [
       {
         id: "resume-modern",
-        zhName: "Minimalist Resume",
         enName: "Modern Resume",
         emoji: "📄",
         description: "Modern A4 resume for print and PDF export",
@@ -17,7 +16,6 @@ const { skillStore, invokeStore, setInvokeResult, resetStores } = vi.hoisted(() 
       },
       {
         id: "article-magazine",
-        zhName: "Magazine Article",
         enName: "Magazine Article",
         emoji: "📖",
         description: "Substack and Medium-inspired editorial long-form publishing",
@@ -28,7 +26,6 @@ const { skillStore, invokeStore, setInvokeResult, resetStores } = vi.hoisted(() 
       },
       {
         id: "social-x-post-card",
-        zhName: "X (Twitter) Post Card",
         enName: "X / Twitter Post Card",
         emoji: "𝕏",
         description: "Realistic X post card with engagement data",
@@ -39,7 +36,6 @@ const { skillStore, invokeStore, setInvokeResult, resetStores } = vi.hoisted(() 
       },
       {
         id: "deck-swiss-international",
-        zhName: "Swiss International Deck",
         enName: "Swiss International Deck",
         emoji: "🇨🇭",
         description: "Swiss International Style presentation, clean grids",
@@ -50,7 +46,6 @@ const { skillStore, invokeStore, setInvokeResult, resetStores } = vi.hoisted(() 
       },
       {
         id: "pricing-page",
-        zhName: "Pricing Page",
         enName: "Pricing Page",
         emoji: "💳",
         description: "Three pricing tiers with comparison table and FAQ",
@@ -61,7 +56,6 @@ const { skillStore, invokeStore, setInvokeResult, resetStores } = vi.hoisted(() 
       },
       {
         id: "team-okrs",
-        zhName: "Team OKR Tracker",
         enName: "Team OKRs",
         emoji: "🎯",
         description: "Quarterly objectives, key results, owners, and status indicators",
@@ -72,7 +66,6 @@ const { skillStore, invokeStore, setInvokeResult, resetStores } = vi.hoisted(() 
       },
       {
         id: "eng-runbook",
-        zhName: "Engineering Runbook",
         enName: "Engineering Runbook",
         emoji: "📕",
         description: "Service overview, alert table, dashboards and on-call procedures",
@@ -83,7 +76,6 @@ const { skillStore, invokeStore, setInvokeResult, resetStores } = vi.hoisted(() 
       },
       {
         id: "kanban-board",
-        zhName: "Kanban Board",
         enName: "Kanban Board",
         emoji: "📋",
         description: "Kanban board with columns",
@@ -94,7 +86,6 @@ const { skillStore, invokeStore, setInvokeResult, resetStores } = vi.hoisted(() 
       },
       {
         id: "weekly-update",
-        zhName: "Weekly Update Deck",
         enName: "Weekly Update Deck",
         emoji: "🗓️",
         description: "Weekly update slides: shipped, in progress, blockers, metrics, requests",
@@ -105,7 +96,6 @@ const { skillStore, invokeStore, setInvokeResult, resetStores } = vi.hoisted(() 
       },
       {
         id: "docs-page",
-        zhName: "Technical Documentation Page",
         enName: "Documentation Page",
         emoji: "📚",
         description: "Technical documentation page with sidebar navigation",
@@ -489,13 +479,13 @@ describe("matchTemplate reason output", () => {
     expect(result.reason).toContain("resume");
   });
 
-  it("includes zhName in result", async () => {
+  it("includes the English template name in result", async () => {
     const result = await matchTemplate(
       "Resume\nWork experience: ABC Company",
       skillStore.templates as any,
       SKILLS_DIR,
       AGENT_ID,
     );
-    expect(result.zhName).toBe("Minimalist Resume");
+    expect(result.enName).toBe("Modern Resume");
   });
 });

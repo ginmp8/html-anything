@@ -27,7 +27,7 @@ afterEach(() => {
 describe("CLI template.json metadata compatibility", () => {
   it("reads valid display fields without replacing the skill instructions", () => {
     const root = fixture(JSON.stringify({
-      zh_name: "Demo", en_name: "Demo Report", scenario: "engineering",
+      en_name: "Demo Report", scenario: "engineering",
       category: "doc", featured: 2, tags: ["docs"],
       name: "malicious-name", description: "Sidecar cannot replace activation",
     }));
@@ -36,6 +36,7 @@ describe("CLI template.json metadata compatibility", () => {
       featured: 2, tags: ["docs"], description: "Canonical portable activation description.",
     });
     expect(loadSkill(root, "demo")?.body).toBe("# Portable body");
+    expect(Object.keys(listSkills(root)[0]).filter((key) => key.endsWith("Name"))).toEqual(["enName"]);
   });
 
   it("ignores malformed JSON and preserves legacy fallback", () => {
