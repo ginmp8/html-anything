@@ -4,7 +4,7 @@ Thanks for thinking about contributing. HTML Anything is small on purpose — mo
 
 This guide tells you exactly where to look for each type of contribution and what bar a PR has to clear before we merge.
 
-<p align="center"><b>English</b> · <a href="CONTRIBUTING.zh-CN.md">简体中文</a></p>
+<p align="center"><b>Language:</b> English</p>
 
 ---
 
@@ -16,7 +16,7 @@ This guide tells you exactly where to look for each type of contribution and wha
 | Hook up a new coding-agent CLI | an **Agent adapter** | [`next/src/lib/agents/argv.ts`](next/src/lib/agents/argv.ts) + [`next/src/lib/agents/detect.ts`](next/src/lib/agents/detect.ts) | ~10 lines in one array |
 | Add a new export target (WeChat Channels, Douyin captions, Notion, …) | an **Export adapter** | [`next/src/components/export-menu.tsx`](next/src/components/export-menu.tsx) + helper under `next/src/lib/export/` | one component + one helper |
 | Add a feature, fix a bug, refactor the streaming parser | code | `next/src/app/`, `next/src/lib/`, `next/src/components/` | normal PR |
-| Improve docs, port a section into another language, fix typos | docs | `README.md`, `README.zh-CN.md`, this file | one PR |
+| Improve docs, port a section into another language, fix typos | docs | `README.md`, `cli/README.md`, this file | one PR |
 
 If you're not sure which bucket your idea is in, [open an issue first](https://github.com/nexu-io/html-anything/issues/new) and we'll point you at the right surface.
 
@@ -139,7 +139,7 @@ That's it. `/api/agents` will detect it on `PATH`, the top-bar picker shows it, 
 
 1. **A real session works end-to-end.** Run `pnpm dev`, pick your agent, generate any skill's `example_prompt`, and paste the SSE log into the PR description showing it streamed an artifact through.
 2. **`PATH` detection works on macOS, Linux, and WSL.** The scanner already includes `~/.local/bin` · `~/.bun/bin` · `/opt/homebrew/bin` · `~/.npm-global/bin`; if your CLI lives somewhere else, add the dir to the scan list.
-3. **The README's "Supported coding agents" table gets one row** in both `README.md` and `README.zh-CN.md`.
+3. **The README's "Supported coding agents" table gets one row** in `README.md`.
 4. **Stream parser is reusable.** If the CLI emits the same JSON-line shape as another adapter, share the parser — don't fork.
 
 ---
@@ -161,7 +161,7 @@ Export targets live in two places: a helper under `next/src/lib/export/` that pr
 We're not pedantic about formatting (Prettier on save is fine), but two rules are non-negotiable because they show up in the prompt stack and the user-facing API:
 
 1. **Single quotes in TS/TSX.** Strings are single-quoted unless escaping makes them ugly. The codebase is already consistent — please match.
-2. **Comments in English.** Even if the PR is translating something into 中文, code comments stay in English so we can keep one set of greppable references.
+2. **Comments in English.** Keep code comments in English so maintainers can search one set of references.
 
 Beyond that:
 
@@ -221,14 +221,14 @@ If you're not sure whether your idea fits, open a discussion before writing the 
 
 ---
 
-## Localization maintenance
+## English-only content policy
 
-The repo ships two languages at parity: English (`README.md`, `CONTRIBUTING.md`) and 简体中文 (`README.zh-CN.md`, `CONTRIBUTING.zh-CN.md`). When adding or renaming a skill, agent, or export target:
+The repository maintains one language for checked-in content: English. This applies to documentation, template metadata, skill instructions, UI copy, examples, tests, and developer comments.
 
-- Update **both** READMEs' tables.
-- Update **both** CONTRIBUTING docs if your change introduces a new contribution surface or a new bar a PR has to clear.
-- **Skill prompt bodies stay in their source language.** Don't translate `SKILL.md` — it's part of the prompt stack the agent reads, and keeping one source language avoids multiplying prompt QA across locales.
-- Daemon error messages, file names, and agent-generated artifact text are known limitations unless a PR explicitly scopes them.
+- Update the English README and relevant English documentation for user-facing changes.
+- Write and review all new or modified skills and their display metadata in English; keep technical identifiers and product names unchanged.
+- Use English test scenarios and samples while preserving the ability to parse user-provided Unicode text.
+- Do not introduce localized duplicate documentation, untranslated locale dictionaries, or machine-generated translations without review.
 
 ---
 
