@@ -1,6 +1,5 @@
 ---
 name: frame-light-leak-cinema
-zh_name: "胶片漏光电影帧"
 en_name: "Light-Leak Cinematic Frame"
 emoji: "🎞️"
 description: "胶片漏光 + 颗粒噪点 + 16:9 letterbox + 衬线大字, 电影感开场 / 章节卡"

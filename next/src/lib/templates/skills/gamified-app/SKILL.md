@@ -1,6 +1,5 @@
 ---
 name: gamified-app
-zh_name: "游戏化 App 多屏"
 en_name: "Gamified App"
 emoji: "🕹️"
 description: "三屏: 封面 / 今日任务带 XP / 任务详情, 暗色舞台"

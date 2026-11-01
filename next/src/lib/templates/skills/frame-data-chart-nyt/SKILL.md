@@ -1,6 +1,5 @@
 ---
 name: frame-data-chart-nyt
-zh_name: "NYT 风数据图表帧"
 en_name: "NYT-Style Data Chart Frame"
 emoji: "📈"
 description: "NYT-newsroom 排版 + 错峰揭示动画 + 编辑级图表 (折线/柱/范围带)"

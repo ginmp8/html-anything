@@ -1,6 +1,5 @@
 ---
 name: flowai-team-dashboard
-zh_name: "FlowAI 团队管理"
 en_name: "FlowAI Team Dashboard"
 emoji: "🌊"
 description: "三个 tab 的团队管理后台: 成员、详情、活动日志, 含图表 + CSV 导出"

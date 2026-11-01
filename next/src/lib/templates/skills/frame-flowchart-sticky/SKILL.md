@@ -1,6 +1,5 @@
 ---
 name: frame-flowchart-sticky
-zh_name: "便利贴流程图帧"
 en_name: "Sticky Flowchart Frame"
 emoji: "📝"
 description: "SVG 曲线连接 + 便利贴节点 + 光标交互, 像白板 brainstorm"
