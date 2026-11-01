@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
   let prompt: string;
   if (editFromHtml && editFromContent) {
     prompt = buildEditPrompt({
-      templateName: skill.zhName,
+      templateName: skill.enName,
       templateAspect: skill.aspectHint,
       newContent: content,
       oldContent: editFromContent,
