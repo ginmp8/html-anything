@@ -23,7 +23,6 @@ const SKILLS_DIR = path.join(process.cwd(), "src/lib/templates/skills");
 
 export type SkillFrontmatter = {
   name?: string;
-  zh_name?: string;
   en_name?: string;
   emoji?: string;
   description?: string;
@@ -63,7 +62,6 @@ export type SkillExampleMeta = {
  */
 export type SkillMeta = {
   id: string;
-  zhName: string;
   enName: string;
   emoji: string;
   description: string;
@@ -128,7 +126,6 @@ function parseFrontmatter(raw: string): { fm: SkillFrontmatter; body: string } {
         break;
       }
       case "name":
-      case "zh_name":
       case "en_name":
       case "emoji":
       case "description":
@@ -176,7 +173,7 @@ function readTemplateMetadata(dir: string): Partial<SkillFrontmatter> {
   const data = parsed as Record<string, unknown>;
   const fm: Partial<SkillFrontmatter> = {};
   const textFields = [
-    "zh_name", "en_name", "emoji", "category", "scenario", "aspect_hint",
+    "en_name", "emoji", "category", "scenario", "aspect_hint",
     "example_id", "example_name", "example_format", "example_tagline",
     "example_desc", "example_source_url", "example_source_label",
   ] as const;
@@ -214,8 +211,7 @@ function readTemplateMetadata(dir: string): Partial<SkillFrontmatter> {
 function fmToMeta(id: string, fm: SkillFrontmatter, hasHtml: boolean, hasMd: boolean): SkillMeta {
   const meta: SkillMeta = {
     id,
-    zhName: fm.zh_name ?? fm.name ?? id,
-    enName: fm.en_name ?? id,
+    enName: fm.en_name ?? fm.name ?? id,
     emoji: fm.emoji ?? "✨",
     description: fm.description ?? "",
     category: fm.category ?? "other",
@@ -228,7 +224,7 @@ function fmToMeta(id: string, fm: SkillFrontmatter, hasHtml: boolean, hasMd: boo
   if (fm.example_id || hasMd || hasHtml) {
     meta.example = {
       id: fm.example_id ?? `example-${id}`,
-      name: fm.example_name ?? `${meta.zhName} Example`,
+      name: fm.example_name ?? `${meta.enName} Example`,
       format: fm.example_format ?? "markdown",
       tagline: fm.example_tagline ?? "",
       desc: fm.example_desc ?? "",

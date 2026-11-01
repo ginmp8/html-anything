@@ -96,7 +96,7 @@ const SCENARIO_SIGNALS: Record<string, string[]> = {
 
 export interface MatchResult {
   templateId: string;
-  zhName: string;
+  enName: string;
   confidence: number;
   reason: string;
 }
@@ -129,7 +129,7 @@ function ruleMatch(content: string, meta: SkillMeta): number {
     if (kwMatches(lower, tag)) score += 3;
   }
 
-  const nameWords = normalize(meta.zhName).split(" ").filter((w) => w.length >= 2);
+  const nameWords = normalize(meta.enName).split(" ").filter((w) => w.length >= 2);
   const descWords = normalize(meta.description).split(" ").filter((w) => w.length >= 3);
 
   for (const w of nameWords) {
@@ -166,10 +166,10 @@ function strongSignalMatch(
 
   if (best && best.confidence >= CONFIDENCE_THRESHOLD) {
     const meta = loadSkill(skillsDir, best.templateId);
-    const name = meta?.zhName ?? best.templateId;
+    const name = meta?.enName ?? best.templateId;
     return {
       templateId: best.templateId,
-      zhName: name,
+      enName: name,
       confidence: best.confidence,
       reason: `Keyword match: ${best.matched.join(", ")} → ${name}`,
     };
@@ -194,9 +194,9 @@ function fallbackMatch(content: string, templates: SkillMeta[]): MatchResult | n
 
   return {
     templateId: best.id,
-    zhName: best.zhName,
+    enName: best.enName,
     confidence: bestScore,
-    reason: `Best match: ${best.zhName} (scenario: ${best.scenario}, score: ${bestScore})`,
+    reason: `Best match: ${best.enName} (scenario: ${best.scenario}, score: ${bestScore})`,
   };
 }
 
@@ -261,7 +261,7 @@ export async function matchTemplate(
     const fallback = templates.find((t) => t.id === "deck-swiss-international") ?? templates[0];
     return {
       templateId: fallback.id,
-      zhName: fallback.zhName,
+      enName: fallback.enName,
       confidence: 1,
       reason: "Content is short; using a general-purpose template",
     };
@@ -281,7 +281,7 @@ export async function matchTemplate(
   const fallback = templates.find((t) => t.id === "deck-swiss-international") ?? templates[0];
   return {
     templateId: fallback.id,
-    zhName: fallback.zhName,
+    enName: fallback.enName,
     confidence: 1,
     reason: "Unable to identify subject; using the default template",
   };

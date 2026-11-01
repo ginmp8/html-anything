@@ -28,7 +28,6 @@ const FEATURED_KEY = "_featured";
 function matchesQuery(tpl: TemplateDef, q: string): boolean {
   if (!q) return true;
   const hay = [
-    tpl.zhName,
     tpl.enName,
     tpl.description,
     tpl.aspectHint,
@@ -50,7 +49,6 @@ export function TemplatePicker() {
   const selectedId = useStore((s) => selectActiveTask(s)?.templateId ?? "article-magazine");
   const setSelected = useStore((s) => s.setSelectedTemplate);
   const loadSample = useStore((s) => s.loadSample);
-  const locale = useStore((s) => s.locale);
   const t = useT();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -64,7 +62,7 @@ export function TemplatePicker() {
     const key = scenarioLabelKey(s);
     return key ? t(key) : s;
   };
-  const templateName = (def: TemplateDef) => (locale === "en" ? def.enName : def.zhName);
+  const templateName = (def: TemplateDef) => def.enName;
 
   // hover preview state — load + cache example.html lazily on hover.
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -154,14 +152,14 @@ export function TemplatePicker() {
         .filter((tpl) => typeof tpl.recommended === "number" && matchesQuery(tpl, query))
         .sort(
           (a, b) =>
-            rankRecommended(a) - rankRecommended(b) || a.zhName.localeCompare(b.zhName, "zh"),
+            rankRecommended(a) - rankRecommended(b) || a.enName.localeCompare(b.enName, "en"),
         );
       return [{ key: FEATURED_KEY, label: t("template.filter.featured"), items }];
     }
 
     const filtered = list
       .filter((tpl) => (filter === "all" || tpl.scenario === filter) && matchesQuery(tpl, query))
-      .sort((a, b) => rankFeatured(a) - rankFeatured(b) || a.zhName.localeCompare(b.zhName, "zh"));
+      .sort((a, b) => rankFeatured(a) - rankFeatured(b) || a.enName.localeCompare(b.enName, "en"));
 
     // scenario filter or active search: flat result list, no recommended group
     if (filter !== "all" || query) {
@@ -174,7 +172,7 @@ export function TemplatePicker() {
       .filter((tpl) => typeof tpl.recommended === "number")
       .sort(
         (a, b) =>
-          rankRecommended(a) - rankRecommended(b) || a.zhName.localeCompare(b.zhName, "zh"),
+          rankRecommended(a) - rankRecommended(b) || a.enName.localeCompare(b.enName, "en"),
       );
     const rest = filtered.filter((def) => typeof def.recommended !== "number");
     const buckets = new Map<string, TemplateDef[]>();
@@ -500,7 +498,7 @@ export function TemplatePicker() {
                   {templateName(hoveredTpl)}
                 </div>
                 <div className="text-[10.5px] text-[var(--ink-faint)] uppercase tracking-wider">
-                  {hoveredTpl.aspectHint} · {locale === "en" ? hoveredTpl.zhName : hoveredTpl.enName}
+                  {hoveredTpl.aspectHint}
                 </div>
               </div>
               {hoveredTpl.example?.source && (

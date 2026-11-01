@@ -231,7 +231,7 @@ function SampleCard({
             className="rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-semibold tracking-wide backdrop-blur"
             style={{ border: "1px solid var(--line-faint)", color: "var(--ink)" }}
           >
-            {tpl.emoji} {locale === "en" ? tpl.enName : tpl.zhName}
+            {tpl.emoji} {tpl.enName}
           </span>
           {loaded && (
             <span
@@ -251,7 +251,7 @@ function SampleCard({
       <div className="flex flex-1 flex-col gap-2 p-4">
         <div>
           <div className="font-semibold text-[14px] text-[var(--ink)] leading-snug">
-            {example?.name || (locale === "en" ? tpl.enName : tpl.zhName)}
+            {example?.name || tpl.enName}
           </div>
           {example?.tagline && (
             <div className="text-[11.5px] text-[var(--coral)] mt-0.5">{example.tagline}</div>

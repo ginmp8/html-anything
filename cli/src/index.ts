@@ -205,7 +205,7 @@ async function handleConvert(args: string[]): Promise<void> {
     console.error("  html-anything config set-default-template <id>");
     console.error("\nAvailable templates:");
     for (const t of getAvailableTemplates()) {
-      console.error(`  ${t.id} — ${t.zhName}`);
+      console.error(`  ${t.id} — ${t.enName}`);
     }
     process.exit(1);
   }
@@ -361,7 +361,7 @@ async function convertOne(opts: {
   const prompt = assemblePrompt({ body: skill.body, content, format });
 
   const label = inputPath ? path.basename(inputPath) : "stdin";
-  console.error(`Template: ${skill.zhName} (${skill.id})`);
+  console.error(`Template: ${skill.enName} (${skill.id})`);
   console.error(`Agent: ${selectedAgent.label} (${selectedAgent.id})`);
   if (model) console.error(`Model: ${model}`);
   if (inputPath) console.error(`Input: ${label}`);
@@ -646,7 +646,7 @@ async function handleAuto(args: string[]): Promise<void> {
     forceAi,
   );
 
-  console.error(`Matched: ${result.zhName} (${result.templateId})`);
+  console.error(`Matched: ${result.enName} (${result.templateId})`);
   console.error(`Confidence: ${result.confidence}/10`);
   console.error(`Reason: ${result.reason}`);
 
@@ -686,7 +686,7 @@ function handleTemplates(): void {
     console.log(`[${category}]`);
     for (const s of skills) {
       const isDefault = s.id === config.defaultTemplate ? " (default)" : "";
-      console.log(`  ${s.emoji} ${s.id} — ${s.zhName}${isDefault}`);
+      console.log(`  ${s.emoji} ${s.id} — ${s.enName}${isDefault}`);
     }
     console.log();
   }
@@ -723,7 +723,7 @@ function handleConfig(args: string[]): void {
     } else {
       if (config.defaultTemplate) {
         const t = getTemplate(config.defaultTemplate);
-        console.log(`  default-template: ${config.defaultTemplate}${t ? ` (${t.zhName})` : ""}`);
+        console.log(`  default-template: ${config.defaultTemplate}${t ? ` (${t.enName})` : ""}`);
       }
       if (config.defaultAgent) console.log(`  default-agent: ${config.defaultAgent}`);
       if (config.model) console.log(`  model: ${config.model}`);
@@ -748,7 +748,7 @@ function handleConfig(args: string[]): void {
       }
       try {
         saveConfig({ defaultTemplate: val });
-        console.log(`Default template set to: ${val} (${skill.zhName})`);
+        console.log(`Default template set to: ${val} (${skill.enName})`);
       } catch (err) {
         console.error(`Error: ${err instanceof Error ? err.message : String(err)}`);
         process.exit(1);
