@@ -46,7 +46,7 @@ export function conversionOutcome(
 }
 
 /** prefix logged when the run is sent in diff-edit mode (vs full regeneration) */
-const DIFF_LOG_PREFIX = "🔁 diff-edit 模式";
+const DIFF_LOG_PREFIX = "🔁 diff-edit mode";
 
 // per-task abort controllers — multiple tasks can stream concurrently
 const controllers = new Map<string, AbortController>();
@@ -87,7 +87,7 @@ export function useConvert() {
       const summary = summarizeForAgent(inlinedContent);
       const enrichedContent =
         summary.preview && summary.format !== "markdown" && summary.format !== "html" && summary.format !== "text"
-          ? `${summary.preview}\n\n--- 原始内容 ---\n${summary.raw}`
+          ? `${summary.preview}\n\n--- Original content ---\n${summary.raw}`
           : summary.raw;
 
       const useModel = req.model && req.model !== "default" ? req.model : undefined;
@@ -120,12 +120,12 @@ export function useConvert() {
         ...(editPayload ?? {}),
       };
 
-      const sizeNote = `输入 ${enrichedContent.length.toLocaleString()} 字符 (${summary.format})`;
+      const sizeNote = `Input ${enrichedContent.length.toLocaleString()} characters (${summary.format})`;
       store.pushLogFor(taskId, {
         kind: "info",
         text: isEdit
-          ? `${DIFF_LOG_PREFIX} · ${req.agent}${useModel ? ` · 模型 ${useModel}` : ""} · 模板 ${req.templateId} · ${sizeNote} · 原 HTML ${(task!.baseHtml!.length / 1024).toFixed(1)} KB`
-          : `准备调用 ${req.agent}${useModel ? ` · 模型 ${useModel}` : ""} · 模板 ${req.templateId} · ${sizeNote}`,
+          ? `${DIFF_LOG_PREFIX} · ${req.agent}${useModel ? ` · model ${useModel}` : ""} · template ${req.templateId} · ${sizeNote} · original HTML ${(task!.baseHtml!.length / 1024).toFixed(1)} KB`
+          : `Preparing to invoke ${req.agent}${useModel ? ` · model ${useModel}` : ""} · template ${req.templateId} · ${sizeNote}`,
       });
 
       try {
@@ -206,7 +206,7 @@ export function useConvert() {
         }
       } catch (err) {
         if ((err as Error)?.name === "AbortError") {
-          useStore.getState().pushLogFor(taskId, { kind: "info", text: "已取消" });
+          useStore.getState().pushLogFor(taskId, { kind: "info", text: "Canceled" });
           useStore.getState().setStatusFor(taskId, "idle");
           return;
         }
@@ -251,7 +251,7 @@ function handleEvent(taskId: string, event: string, data: unknown, startedAt: nu
           store.pushLogFor(taskId, {
             kind: "delta",
             elapsed,
-            text: `收到首个 HTML 片段 (${formatBytes(d.text.length)})`,
+            text: `Received first HTML chunk (${formatBytes(d.text.length)})`,
           });
         }
       }
@@ -260,7 +260,7 @@ function handleEvent(taskId: string, event: string, data: unknown, startedAt: nu
     case "html": {
       // Agent decided to write the HTML to a file via the Write tool instead
       // of streaming it. The parser rescued the file's content from the
-      // tool_use input — REPLACE the accumulated text (preamble + "已输出至 …"
+      // tool_use input — REPLACE the accumulated text (preamble + "saved to …"
       // confirmation) so the preview shows the real document.
       if (typeof d.text === "string") {
         store.setHtmlFor(taskId, d.text);
@@ -273,7 +273,7 @@ function handleEvent(taskId: string, event: string, data: unknown, startedAt: nu
         store.pushLogFor(taskId, {
           kind: "info",
           elapsed,
-          text: `📄 从 Write 工具输入恢复 HTML (${len.toLocaleString()} 字节)`,
+          text: `📄 Recovered HTML from Write tool input (${len.toLocaleString()} bytes)`,
         });
       }
       break;
@@ -319,7 +319,7 @@ function handleEvent(taskId: string, event: string, data: unknown, startedAt: nu
       store.pushLogFor(taskId, {
         kind: "done",
         elapsed,
-        text: `agent 进程退出 (exit=${d.code ?? "?"})`,
+        text: `Agent process exited (exit=${d.code ?? "?"})`,
       });
       break;
     }
@@ -352,7 +352,7 @@ function formatMeta(key: string, value: unknown): string {
   if (key === "duration_ms") return `duration = ${value} ms`;
   if (key === "cost_usd" && typeof value === "number") return `cost ≈ $${value.toFixed(4)}`;
   if (key === "result") return `result = ${value}`;
-  if (key === 'phase' && value === 'generating') return 'Codex 已开始生成';
+  if (key === 'phase' && value === 'generating') return 'Codex started generating';
   if (key === 'warning') return `warning: ${String(value)}`;
   if (key === "rate_limit" && value && typeof value === "object") {
     const r = value as { status?: string; rateLimitType?: string };

@@ -11,7 +11,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 const SKILL_MD = `---
 name: usertest
-zh_name: 用户测试
+zh_name: User Test
 en_name: User Test
 emoji: "🧪"
 description: a user skill
