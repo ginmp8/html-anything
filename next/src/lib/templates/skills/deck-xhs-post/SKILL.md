@@ -1,6 +1,5 @@
 ---
 name: deck-xhs-post
-zh_name: "小红书图文 Deck"
 en_name: "Xiaohongshu Post Deck"
 emoji: "🎀"
 description: "9 页 3:4 竖版图文, 暖 pastel + 虚线 sticker 卡片"

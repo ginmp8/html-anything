@@ -1,6 +1,5 @@
 ---
 name: docs-page
-zh_name: "技术文档页"
 en_name: "Docs Page"
 emoji: "📘"
 description: "三栏文档页: 侧导航 + 正文 + 右 TOC"

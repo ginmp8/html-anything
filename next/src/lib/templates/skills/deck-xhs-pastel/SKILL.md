@@ -1,6 +1,5 @@
 ---
 name: deck-xhs-pastel
-zh_name: "马卡龙慢生活 Deck"
 en_name: "Pastel Slow-life Deck"
 emoji: "🍡"
 description: "奶油底 + 柔光 blob + 马卡龙圆角卡片 + Playfair 斜体序号"
