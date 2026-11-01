@@ -1,6 +1,5 @@
 ---
 name: web-proto-editorial
-zh_name: "Editorial 原型"
 en_name: "Editorial Prototype"
 emoji: "📜"
 description: "Editorial-minimalist: 暖色单色 canvas + serif display + grotesque body"

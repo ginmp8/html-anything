@@ -1,6 +1,5 @@
 ---
 name: waitlist-page
-zh_name: "等候名单页"
 en_name: "Waitlist Page"
 emoji: "✉️"
 description: "极简产品预发布落地页, 含邮箱捕获、logo、装饰图层"

@@ -1,6 +1,5 @@
 ---
 name: wireframe-sketch
-zh_name: "手绘线框图"
 en_name: "Wireframe Sketch"
 emoji: "✏️"
 description: "网格背景 + marker 笔触 + 多 tab + sticky note + scribble 图表"

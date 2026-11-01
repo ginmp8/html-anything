@@ -1,6 +1,5 @@
 ---
 name: vfx-text-cursor
-zh_name: "VFX 文字光标"
 en_name: "VFX Text Cursor"
 emoji: "✨"
 description: "光标拖光 + 彩色像散射线 + 定向光斑, 适合视频片头逐字揭示金句"

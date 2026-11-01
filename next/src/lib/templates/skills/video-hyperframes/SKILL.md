@@ -1,6 +1,5 @@
 ---
 name: video-hyperframes
-zh_name: "Hyperframes 视频脚本"
 en_name: "Hyperframes Video"
 emoji: "🎞️"
 description: "Hyperframes / Remotion 兼容的连续帧动画, 可自动播放"
