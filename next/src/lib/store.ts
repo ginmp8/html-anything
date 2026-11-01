@@ -122,7 +122,7 @@ function makeTask(init?: Partial<Task>): Task {
   const now = Date.now();
   return {
     id: init?.id ?? `t_${now.toString(36)}_${Math.random().toString(36).slice(2, 7)}`,
-    name: init?.name ?? "新任务",
+    name: init?.name ?? "New task",
     content: init?.content ?? "",
     format: init?.format ?? "text",
     filename: init?.filename,
@@ -139,16 +139,13 @@ function makeTask(init?: Partial<Task>): Task {
   };
 }
 
-// Shipped locales. Adding a new one means dropping a dictionary into
-// `src/lib/i18n/locales/` and registering it in `src/lib/i18n.ts`.
-// We ship only en + zh-CN today and leave the rest to contributors.
-export type Locale = "en" | "zh-CN";
+// English-only UI. Existing persisted locale values migrate to English.
+export type Locale = "en";
 
-export const LOCALES: Locale[] = ["en", "zh-CN"];
+export const LOCALES: Locale[] = ["en"];
 
 export const LOCALE_LABEL: Record<Locale, string> = {
-  "en": "English",
-  "zh-CN": "简体中文",
+  en: "English",
 };
 
 /**
@@ -277,7 +274,7 @@ function patchTask(tasks: Task[], id: string, patch: Partial<Task> | ((t: Task) 
   return changed ? next : tasks;
 }
 
-const initialTask = makeTask({ name: "任务 1" });
+const initialTask = makeTask({ name: "Task 1" });
 
 export const useStore = create<State>()(
   persist(
@@ -297,7 +294,7 @@ export const useStore = create<State>()(
       newTask: (init) => {
         const tasks = get().tasks;
         const n = tasks.length + 1;
-        const t = makeTask({ name: init?.name ?? `任务 ${n}`, ...init });
+        const t = makeTask({ name: init?.name ?? `Task ${n}`, ...init });
         set({ tasks: [...tasks, t], activeTaskId: t.id });
         return t.id;
       },
@@ -305,7 +302,7 @@ export const useStore = create<State>()(
         const { tasks, activeTaskId } = get();
         if (tasks.length <= 1) {
           // never leave 0 tasks — replace with a fresh empty one
-          const fresh = makeTask({ name: "任务 1" });
+          const fresh = makeTask({ name: "Task 1" });
           set({ tasks: [fresh], activeTaskId: fresh.id });
           void deleteTaskRuns(id).catch(() => {});
           return;
@@ -320,13 +317,13 @@ export const useStore = create<State>()(
         if (get().tasks.some((t) => t.id === id)) set({ activeTaskId: id });
       },
       renameTask: (id, name) => {
-        set((s) => ({ tasks: patchTask(s.tasks, id, { name: name.trim() || "未命名" }) }));
+        set((s) => ({ tasks: patchTask(s.tasks, id, { name: name.trim() || "Untitled" }) }));
       },
       duplicateTask: (id) => {
         const src = get().tasks.find((t) => t.id === id);
         if (!src) return id;
         const copy = makeTask({
-          name: `${src.name} · 副本`,
+          name: `${src.name} · Copy`,
           content: src.content,
           format: src.format,
           filename: src.filename,
@@ -490,7 +487,7 @@ export const useStore = create<State>()(
       // Legacy key from the old "HTML Everything" brand; do NOT rename — every
       // existing user's saved tasks live under this localStorage key.
       name: "html-everything-store",
-      version: 7,
+      version: 8,
       partialize: (s): Persisted => ({
         tasks: s.tasks.map((t) => ({
           ...t,
@@ -512,7 +509,7 @@ export const useStore = create<State>()(
         if (fromVersion < 2 && persisted && typeof persisted === "object") {
           const old = persisted as Record<string, unknown>;
           const t = makeTask({
-            name: "任务 1",
+            name: "Task 1",
             content: typeof old.content === "string" ? old.content : "",
             format: typeof old.format === "string" ? old.format : "text",
             filename: typeof old.filename === "string" ? old.filename : undefined,
@@ -570,6 +567,11 @@ export const useStore = create<State>()(
               if (!Array.isArray(t.deployments)) t.deployments = [];
             }
           }
+        }
+        // v7 -> v8: remove the previous Chinese UI locale without altering
+        // existing task data or other persisted preferences.
+        if (fromVersion < 8 && persisted && typeof persisted === "object") {
+          (persisted as Record<string, unknown>).locale = "en";
         }
         return persisted as Persisted;
       },

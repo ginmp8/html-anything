@@ -18,20 +18,20 @@ type Body = {
 
 function buildDraftPrompt(args: { instruction: string; context: string }): string {
   const ctx = args.context.trim();
-  return `你正在为用户起草一段 **markdown** 内容（不是 HTML，不是 JSON，不是代码）。
+  return `You are drafting Markdown for the user. Do not return HTML, JSON, or executable code unless specifically requested as Markdown content.
 
-【硬性规则】
-1. 只输出 markdown 正文，不要任何前后解释、不要 \`\`\`md 围栏、不要"以下是…"开头。
-2. 第一个字符就是正文。最后一个字符是正文末尾。
-3. 不要捏造数据、不要凭空添加引用链接。
-4. 标题、列表、强调、引用、代码块按 markdown 语法书写。
-5. 如果用户没有指定语言，使用与"已有内容"一致的语言；都没有就用中文。
-6. 长度控制：除非用户明确要求长文，控制在 300 字以内。
+[REQUIRED RULES]
+1. Return only the Markdown content, with no preamble, explanation, or surrounding code fence.
+2. The response begins with the actual content and ends with the last content character.
+3. Do not invent data or citations or add links that are not supported.
+4. Use standard Markdown headings, lists, emphasis, quotes, and code blocks when appropriate.
+5. Respect a language explicitly requested by the user. Otherwise follow the language of the existing editor content, or default to English when the editor is empty.
+6. Keep the draft concise (roughly 300 words or fewer) unless the user requests a long piece.
 
-【用户当前编辑器里的内容（可能为空）】
-${ctx ? ctx : "（空）"}
+[EXISTING EDITOR CONTENT -- may be empty]
+${ctx ? ctx : "(empty)"}
 
-【用户的需求】
+[USER REQUEST]
 ${args.instruction}
 `;
 }
