@@ -1,28 +1,25 @@
 ---
 name: data-report
-zh_name: "数据可视化报告"
-en_name: "Data Visualization Report"
-emoji: "📊"
-description: "把 CSV/Excel/JSON 数据转成漂亮的可视化报告页"
-category: data
-scenario: finance
-aspect_hint: "桌面长页面"
-featured: 10
-tags: ["data", "report", "chart", "数据", "报告"]
-example_id: sample-data-weekly-report
-example_name: "数据报告 · 周报"
-example_format: csv
-example_tagline: "KPI 卡 + Chart.js 图表 + 表格"
-example_desc: "9 个月增长数据自动渲染成可视化报告, 内联 Chart.js"
+description: Transform supplied CSV, JSON, spreadsheets, or tabular notes into a trustworthy single-file HTML data report with KPIs, charts, tables, and source-aware findings. Use for explanatory reporting; not for live admin dashboards or statistical experiment decisions.
 ---
 
-【模板: 数据可视化报告】
-- 头部: 报告标题 + 时间区间 + 数据来源说明。
-- KPI 卡片网格: 3-5 个最重要指标, 每个卡片显示数值 + 同比变化 + 微型趋势线。
-- 主图表区: 至少 2 个图表 (柱状 / 折线 / 饼 / 散点), 使用 Chart.js 或 ECharts (jsdelivr CDN 引入), 数据从用户输入解析得到。
-- **图表容器必须有固定高度**: 每个 `<canvas>` 外层包一个 `<div style="position:relative;height:NNNpx">` (KPI 迷你图 ~40px, 主图表 ~240–280px)。Chart.js 用 `responsive:true, maintainAspectRatio:false` 时若父容器没有显式高度, 会陷入 ResizeObserver 死循环, 图表无限增高直至卡死浏览器。**绝对不要**直接给 canvas 写 `height=` 属性当布局, 那个只是初始值。
-- 数据表格: 用户原始数据节选, 使用 `<table>` + 现代化样式 (zebra stripe, hover, sticky header)。
-- 洞察块: 3-5 条文字洞察, 用 emoji 开头, 像产品周报。
-- 底部"方法论"折叠区。
-- 配色克制专业: 主色 1 + 中性色阶, 图表用调色板。
-- **必须解析用户提供的实际数据**, 不要捏造。
+# Data Visualization Report
+
+## Purpose and boundaries
+Convert user-provided data into a readable report without inventing data, sources, causation, or statistical certainty. Use dashboard for interactive monitoring and experiment-readout for A/B testing conclusions. The input may be a table plus narrative; treat narrative claims separately from computed values.
+
+## Workflow
+1. Identify fields, types, units, time zone, period, grain, missing values, duplicates, and relevant filters. Parse CSV quoting correctly and keep source row/column identity. If parsing is uncertain, disclose the ambiguity rather than silently changing a figure.
+2. Compute only supported values. Show the numerator, denominator, grouping window, and method for ratios and changes. Never divide by zero or call a percentage-point change a percent change. Do not infer correlation as causation.
+3. Plan the content from the actual data: title, period and provenance; supported KPI summary; one or more charts with clear questions; an exact-value table; evidence-backed observations; and a collapsible methodology section. Do not force two charts if the data supports only one.
+4. Pick charts by structure: line for temporal observations, bars for comparisons, scatter only for paired numeric records, distributions only with adequate data. Charts and tables must derive from the same parsed source, with consistent formatting and sort order.
+5. Label insights as computed finding, source-provided assertion, or hypothesis where needed. Provide an explicit evidence gap when the data cannot answer the question.
+
+## HTML requirements
+- Return a complete single-file HTML report with well-structured headings, readable typography, mobile layout, accessible chart captions, and an HTML table that remains usable without JavaScript.
+- When using Chart.js with responsive true and maintainAspectRatio false, wrap every canvas in a parent with a fixed or constrained height (for example, position: relative; height: 280px). Never rely on canvas height attributes for CSS layout; unbounded containers can trigger resize loops.
+- If using a CDN, include an inline fallback so the report remains readable offline. Use actual parsed numbers for visualization; escape untrusted cell content and do not interpolate it into script or markup unsafely.
+- Use a restrained palette, textual legends, non-color status cues, visible focus styles, and concise methodology. User content determines the number of sections; no artificial minimum chart or card count.
+
+## Acceptance
+A reviewer can trace every displayed numerical value to an input or named calculation; source-provided statements are not presented as independently verified facts; absent data remains absent.

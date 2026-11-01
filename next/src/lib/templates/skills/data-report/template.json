@@ -1,0 +1,21 @@
+{
+  "zh_name": "数据可视化报告",
+  "en_name": "Data Visualization Report",
+  "emoji": "📊",
+  "category": "data",
+  "scenario": "finance",
+  "aspect_hint": "桌面长页面",
+  "featured": 10,
+  "tags": [
+    "data",
+    "report",
+    "chart",
+    "数据",
+    "报告"
+  ],
+  "example_id": "sample-data-weekly-report",
+  "example_name": "数据报告 · 周报",
+  "example_format": "csv",
+  "example_tagline": "KPI 卡 + Chart.js 图表 + 表格",
+  "example_desc": "9 个月增长数据自动渲染成可视化报告, 内联 Chart.js"
+}

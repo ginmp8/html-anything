@@ -1,0 +1,22 @@
+{
+  "zh_name": "事故时间线",
+  "en_name": "Incident Timeline",
+  "emoji": "⏱️",
+  "category": "data",
+  "scenario": "engineering",
+  "aspect_hint": "时间轴 + 事件表",
+  "tags": [
+    "incident",
+    "timeline",
+    "postmortem",
+    "observability",
+    "evidence",
+    "事故",
+    "时间线"
+  ],
+  "example_id": "sample-incident-timeline",
+  "example_name": "Incident Timeline · Example",
+  "example_format": "markdown",
+  "example_tagline": "Evidence-linked detection to recovery",
+  "example_desc": "Illustrative service incident with timestamps, phases, evidence, and open questions."
+}

@@ -157,6 +157,49 @@ function safeRead(p: string): string | undefined {
   }
 }
 
+
+/**
+ * Optional picker-only metadata. SKILL.md may therefore keep standard Agent
+ * Skills frontmatter (name + description), while legacy inlined fields still work.
+ * The sidecar never overrides the portable activation contract.
+ */
+function readTemplateMetadata(dir: string): Partial<SkillFrontmatter> {
+  const raw = safeRead(path.join(dir, "template.json"));
+  if (!raw || raw.length > 16_384) return {};
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return {};
+  }
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
+  const data = parsed as Record<string, unknown>;
+  const fm: Partial<SkillFrontmatter> = {};
+  const textFields = [
+    "zh_name", "en_name", "emoji", "category", "scenario", "aspect_hint",
+    "example_id", "example_name", "example_format", "example_tagline",
+    "example_desc", "example_source_url", "example_source_label",
+  ] as const;
+  for (const key of textFields) {
+    const value = data[key];
+    if (typeof value === "string" && value.length <= 500) fm[key] = value;
+  }
+  for (const key of ["featured", "recommended"] as const) {
+    const value = data[key];
+    if (typeof value === "number" && Number.isSafeInteger(value) && value >= 0 && value <= 10000) {
+      fm[key] = value;
+    }
+  }
+  if (
+    Array.isArray(data.tags) &&
+    data.tags.length <= 32 &&
+    data.tags.every((tag: unknown) => typeof tag === "string" && tag.length > 0 && tag.length <= 64)
+  ) {
+    fm.tags = data.tags as string[];
+  }
+  return fm;
+}
+
 function fmToMeta(id: string, fm: SkillFrontmatter, hasHtml: boolean, hasMd: boolean): SkillMeta {
   const meta: SkillMeta = {
     id,
@@ -225,7 +268,7 @@ function loadSkillFromDir(id: string, dir: string): LoadedSkill | null {
   const { fm, body } = parseFrontmatter(raw);
   const exampleMd = safeRead(path.join(dir, "example.md"));
   const exampleHtml = safeRead(path.join(dir, "example.html"));
-  const meta = fmToMeta(id, fm, !!exampleHtml, !!exampleMd);
+  const meta = fmToMeta(id, { ...fm, ...readTemplateMetadata(dir) }, !!exampleHtml, !!exampleMd);
   return { ...meta, body, exampleMd, exampleHtml };
 }
 
@@ -235,7 +278,7 @@ function metaFromDir(id: string, dir: string): SkillMeta | null {
   const { fm } = parseFrontmatter(raw);
   const hasHtml = fs.existsSync(path.join(dir, "example.html"));
   const hasMd = fs.existsSync(path.join(dir, "example.md"));
-  return fmToMeta(id, fm, hasHtml, hasMd);
+  return fmToMeta(id, { ...fm, ...readTemplateMetadata(dir) }, hasHtml, hasMd);
 }
 
 /** Return picker-ready metadata for every bundled + user-installed skill. */
